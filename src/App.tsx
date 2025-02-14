@@ -95,7 +95,7 @@ function App() {
           Ari Kurniadi
           </h1>
           
-          <h2 className="text-2xl text-gray-300">Senior Software Engineer</h2>
+          <h2 className="text-2xl text-gray-300">System Administrator</h2>
           
           <div className="flex flex-wrap justify-center gap-6 text-gray-300">
             <div className="flex items-center">
