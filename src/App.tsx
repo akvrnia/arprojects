@@ -208,7 +208,7 @@ function App() {
             </div>
             <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
               <h3 className="text-lg font-semibold text-white">IT Support</h3>
-              <p className="text-blue-400">PT Dinasti Kurnia Sejahtera</p>
+              <p className="text-blue-400">PT. Dinasti Kurnia Sejahtera</p>
               <p className="text-gray-400">2019 - 2020</p>
               <ul className="list-disc list-inside text-gray-300 mt-2 space-y-2">
               <li>Corrective Maintenance IT Infrastructure</li>
