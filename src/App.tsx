@@ -19,10 +19,6 @@ function App() {
       title: 'Operating System',
       skills: ['Windows Server', 'Ubuntu', 'Debian', 'CentOS']
     },
-    hciserver: {
-      title: 'Server & HCI',
-      skills: ['Dell PowerEdge', "Dell EMC PowerStore", "Dell EMC VxRail"]
-    },
     virtualization: {
       title: 'Virtualization',
       skills: ['VMware', 'Proxmox']
