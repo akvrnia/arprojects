@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare, RefreshCw } from 'lucide-react';
+import { useEffect } from 'react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
 
 
 function App() {
@@ -7,41 +7,58 @@ function App() {
   useEffect(() => {
     let touchStartY = 0;
     let touchEndY = 0;
-    const threshold = 150; // minimum pull distance to trigger refresh
+    const threshold = 150; // Minimum pull distance to trigger refresh
     let spinner: HTMLDivElement | null = null;
+    let isRefreshing = false;
 
     // Create and append spinner element
     const createSpinner = () => {
       spinner = document.createElement('div');
       spinner.className = 'pull-to-refresh-spinner';
-      spinner.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>';
+      spinner.innerHTML = `
+        <div class="spinner">
+          <svg viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+          </svg>
+        </div>
+      `;
       document.body.appendChild(spinner);
     };
 
     createSpinner();
 
     const handleTouchStart = (e: TouchEvent) => {
+      if (window.scrollY !== 0 || isRefreshing) return;
       touchStartY = e.touches[0].clientY;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
+      if (window.scrollY !== 0 || isRefreshing) return;
       touchEndY = e.touches[0].clientY;
       const pullDistance = touchEndY - touchStartY;
 
-      if (window.scrollY === 0 && pullDistance > 0 && spinner) {
+      if (pullDistance > 0 && spinner) {
         spinner.style.display = 'block';
-        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 50)}px)`;
+        spinner.style.opacity = `${Math.min(pullDistance / threshold, 1)}`;
+        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 80)}px)`;
       }
     };
 
     const handleTouchEnd = () => {
-      if (spinner) {
-        spinner.style.display = 'none';
-      }
+      if (!spinner || isRefreshing) return;
 
       const pullDistance = touchEndY - touchStartY;
-      if (window.scrollY === 0 && pullDistance > threshold) {
-        window.location.reload();
+      if (pullDistance > threshold) {
+        isRefreshing = true;
+        spinner.classList.add('loading');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else {
+        spinner.style.opacity = '0';
+        setTimeout(() => {
+          if (spinner) spinner.style.display = 'none';
+        }, 300);
       }
     };
 
