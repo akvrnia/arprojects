@@ -139,7 +139,7 @@ function App() {
             </div>
             <div className="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
               <div className="space-y-6 text-gray-300">
-                <div className="text-lg leading-relaxed tracking-wide">
+                <div className="text-justify leading-relaxed tracking-wide">
                   <p className="mb-4">
                   I am a person who is tenacious, disciplined, and has good problem-solving skills. I have a willingness to learn new things and adapt quickly. Have experience as an IT Support and Layer 1 Engineer, handling hardware and software troubleshooting.
                   </p>
