@@ -141,7 +141,7 @@ function App() {
               <div className="space-y-6 text-gray-300">
                 <div className="text-justify leading-relaxed tracking-wide">
                   <p className="mb-4">
-                  I am a person who is tenacious, disciplined, and has good problem-solving skills. I have a willingness to learn new things and adapt quickly. Have experience as an IT Support and Layer 1 Engineer, handling hardware and software troubleshooting.
+                  I am a person who is tenacious, disciplined, and has good problem-solving skills. Have a willingness to learn new things and adapt quickly. Have experience as an IT Support, handling hardware and software troubleshooting.
                   </p>
                   <p className="mb-4">
                   Have completed studies with the Informatics Engineering program study and wish to continue my studies to a higher level.
