@@ -25,13 +25,19 @@
   -webkit-overflow-scrolling: touch;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  overscroll-behavior: auto;
 }
 
 body {
   overflow-y: scroll;
   overscroll-behavior-y: none;
+}
+
+#root, .App {
+  min-height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Pull to refresh styles */
