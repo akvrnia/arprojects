@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, Book, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
 
 function App() {
   const getCertificationStatus = (expiryDate: string) => {
