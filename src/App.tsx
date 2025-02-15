@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, User, Code, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, Book, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
 
 function App() {
   const getCertificationStatus = (expiryDate: string) => {
@@ -72,6 +72,14 @@ function App() {
     },
   ];
 
+  const personalDetails = [
+    { icon: Calendar, label: 'Date of Birth', value: 'Mei 13, 1998' },
+    { icon: MoonStar, label: 'Religion', value: 'Islam' },
+    { icon: Syringe, label: 'Blood Type', value: 'B' },
+    { icon: Gamepad2, label: 'Hobbies', value: 'Cooking, Badminton, Trouring' },
+    { icon: MessagesSquare, label: 'Languages', value: 'Bahasa Indonesia, English, Japanese' },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       {/* Header/Profile Section */}
@@ -86,13 +94,13 @@ function App() {
             />
             <div className="absolute inset-0 rounded-full bg-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
           </div>
-          
+
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-          Ari Kurniadi
+            Ari Kurniadi
           </h1>
-          
+
           <h2 className="text-2xl text-gray-300">System Administrator</h2>
-          
+
           <div className="flex flex-wrap justify-center gap-6 text-gray-300">
             <div className="flex items-center">
               <MapPin className="w-4 h-4 mr-2" />
@@ -107,7 +115,7 @@ function App() {
               <span>akvrnia@gmail.com</span>
             </div>
           </div>
-          
+
           <div className="flex justify-center space-x-4">
             <a href="https://github.com/akvrnia" className="hover:text-blue-400 transition-colors">
               <Github className="w-6 h-6" />
@@ -121,18 +129,52 @@ function App() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8 space-y-16">
-        {/* About Me Section - Full Width */}
-        <section className="max-w-4xl mx-auto animate-fade-in">
-          <div className="flex items-center mb-6">
-            <User className="w-6 h-6 text-blue-400 mr-3" />
-            <h2 className="text-2xl font-bold text-blue-400">About Me</h2>
-          </div>
-          <div className="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
-            <p className="text-gray-300 leading-relaxed text-lg">
-            I am a person who is tenacious, disciplined, and has good problem-solving skills. I have a willingness to learn new things, adapt quickly, and have experience as an IT Support and Layer 1 Engineer, handling hardware and software troubleshooting. Have completed their studies with the Informatics Engineering study program and wish to continue their studies to a higher level.
-            </p>
-          </div>
-        </section>
+        {/* About Me and Personal Details Section - Two Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* About Me Section - Full Width */}
+          <section className="animate-fade-in">
+            <div className="flex items-center mb-6">
+              <UserRoundCheck className="w-6 h-6 text-blue-400 mr-3" />
+              <h2 className="text-2xl font-bold text-blue-400">About Me</h2>
+            </div>
+            <div className="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+              <div className="space-y-6 text-gray-300">
+                <div className="text-lg leading-relaxed tracking-wide">
+                  <p className="mb-4">
+                  I am a person who is tenacious, disciplined, and has good problem-solving skills. I have a willingness to learn new things and adapt quickly. Have experience as an IT Support and Layer 1 Engineer, handling hardware and software troubleshooting.
+                  </p>
+                  <p className="mb-4">
+                  Have completed studies with the Informatics Engineering study program and wish to continue my studies to a higher level.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Personal Details Section */}
+          <section className="animate-fade-in">
+            <div className="flex items-center mb-6">
+              <NotebookPen className="w-6 h-6 text-blue-400 mr-3" />
+              <h2 className="text-2xl font-bold text-blue-400">Personal Details</h2>
+            </div>
+            <div className="bg-gray-800/40 py-5 px-4 rounded-lg backdrop-blur-sm hover:bg-gray-800/50 transition-colors duration-300">
+              <div className="grid gap-0.5">
+                {personalDetails.map((detail, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start space-x-4 group hover:bg-gray-700/30 p-3 rounded-lg transition-colors duration-300"
+                  >
+                    <detail.icon className="w-5 h-5 text-blue-400 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <div>
+                      <h3 className="text-gray-400 text-sm">{detail.label}</h3>
+                      <p className="text-gray-200">{detail.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
 
         {/* Two Column Layout for Education and Skills */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -211,10 +253,10 @@ function App() {
               <p className="text-blue-400">PT. Dinasti Kurnia Sejahtera</p>
               <p className="text-gray-400">2019 - 2020</p>
               <ul className="list-disc list-inside text-gray-300 mt-2 space-y-2">
-              <li>Corrective Maintenance IT Infrastructure</li>
-              <li>Access Control Firewall Administrator</li>
-              <li>IT Helpdesk</li>
-              <li>PC Deployment</li>
+                <li>Corrective Maintenance IT Infrastructure</li>
+                <li>Access Control Firewall Administrator</li>
+                <li>IT Helpdesk</li>
+                <li>PC Deployment</li>
               </ul>
             </div>
           </div>
@@ -233,11 +275,10 @@ function App() {
                 <div key={cert.id} className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-lg font-semibold text-white">{cert.title}</h3>
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                      status === 'active' 
-                        ? 'bg-green-500/20 text-green-400' 
-                        : 'bg-red-500/20 text-red-400'
-                    }`}>
+                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${status === 'active'
+                      ? 'bg-green-500/20 text-green-400'
+                      : 'bg-red-500/20 text-red-400'
+                      }`}>
                       {status}
                     </span>
                   </div>
@@ -254,7 +295,7 @@ function App() {
                       : '-'}
                   </p>
                   <div className="mt-3">
-                    <a 
+                    <a
                       href={cert.verifyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
