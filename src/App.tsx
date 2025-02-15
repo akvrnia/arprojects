@@ -1,7 +1,64 @@
-import React from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare, RefreshCw } from 'lucide-react';
+
 
 function App() {
+
+  useEffect(() => {
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const threshold = 150; // minimum pull distance to trigger refresh
+    let spinner: HTMLDivElement | null = null;
+
+    // Create and append spinner element
+    const createSpinner = () => {
+      spinner = document.createElement('div');
+      spinner.className = 'pull-to-refresh-spinner';
+      spinner.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>';
+      document.body.appendChild(spinner);
+    };
+
+    createSpinner();
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      touchEndY = e.touches[0].clientY;
+      const pullDistance = touchEndY - touchStartY;
+
+      if (window.scrollY === 0 && pullDistance > 0 && spinner) {
+        spinner.style.display = 'block';
+        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 50)}px)`;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      if (spinner) {
+        spinner.style.display = 'none';
+      }
+
+      const pullDistance = touchEndY - touchStartY;
+      if (window.scrollY === 0 && pullDistance > threshold) {
+        window.location.reload();
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+      if (spinner && spinner.parentNode) {
+        spinner.parentNode.removeChild(spinner);
+      }
+    };
+  }, []);
+
   const getCertificationStatus = (expiryDate: string) => {
     const today = new Date();
     const expiry = new Date(expiryDate);
