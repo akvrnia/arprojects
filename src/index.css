@@ -26,6 +26,9 @@
 }
 
 html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   overscroll-behavior: auto;
 }
 
@@ -35,8 +38,11 @@ body {
 }
 
 #root, .App {
-  min-height: 100vh;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures it fills the viewport but not more */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  overflow-y: auto; /* Allows normal scrolling */
   -webkit-overflow-scrolling: touch;
 }
 
