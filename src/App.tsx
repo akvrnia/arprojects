@@ -76,7 +76,7 @@ function App() {
     { icon: Calendar, label: 'Date of Birth', value: 'Mei 13, 1998' },
     { icon: MoonStar, label: 'Religion', value: 'Islam' },
     { icon: Syringe, label: 'Blood Type', value: 'B' },
-    { icon: Gamepad2, label: 'Hobbies', value: 'Cooking, Badminton, Trouring' },
+    { icon: Gamepad2, label: 'Hobbies', value: 'Cooking, Badminton, Touring' },
     { icon: MessagesSquare, label: 'Languages', value: 'Bahasa Indonesia, English, Japanese' },
   ];
 
@@ -144,7 +144,7 @@ function App() {
                   I am a person who is tenacious, disciplined, and has good problem-solving skills. I have a willingness to learn new things and adapt quickly. Have experience as an IT Support and Layer 1 Engineer, handling hardware and software troubleshooting.
                   </p>
                   <p className="mb-4">
-                  Have completed studies with the Informatics Engineering study program and wish to continue my studies to a higher level.
+                  Have completed studies with the Informatics Engineering program study and wish to continue my studies to a higher level.
                   </p>
                 </div>
               </div>
@@ -157,7 +157,7 @@ function App() {
               <NotebookPen className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Personal Details</h2>
             </div>
-            <div className="bg-gray-800/40 py-5 px-4 rounded-lg backdrop-blur-sm hover:bg-gray-800/50 transition-colors duration-300">
+            <div className="bg-gray-800/40 py-4 px-4 rounded-lg backdrop-blur-sm hover:bg-gray-800/50 transition-colors duration-300">
               <div className="grid gap-0.5">
                 {personalDetails.map((detail, index) => (
                   <div
