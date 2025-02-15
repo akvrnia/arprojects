@@ -1,80 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
 
 
 function App() {
 
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [pulling, setPulling] = useState(false);
+  const [pullDistance, setPullDistance] = useState(0);
+
   useEffect(() => {
-    let touchStartY = 0;
-    let touchEndY = 0;
-    const threshold = 150; // Minimum pull distance to trigger refresh
-    let spinner: HTMLDivElement | null = null;
-    let isRefreshing = false;
-
-    // Create and append spinner element
-    const createSpinner = () => {
-      spinner = document.createElement('div');
-      spinner.className = 'pull-to-refresh-spinner';
-      spinner.innerHTML = `
-        <div class="spinner">
-          <svg viewBox="0 0 50 50">
-            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
-          </svg>
-        </div>
-      `;
-      document.body.appendChild(spinner);
-    };
-
-    createSpinner();
-
     const handleTouchStart = (e: TouchEvent) => {
-      if (window.scrollY !== 0 || isRefreshing) return;
-      touchStartY = e.touches[0].clientY;
+      if (window.scrollY === 0) {
+        setPulling(true);
+      }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (window.scrollY !== 0 || isRefreshing) return;
-      touchEndY = e.touches[0].clientY;
-      const pullDistance = touchEndY - touchStartY;
-
-      if (pullDistance > 0 && spinner) {
-        spinner.style.display = 'block';
-        spinner.style.opacity = `${Math.min(pullDistance / threshold, 1)}`;
-        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 80)}px)`;
+      if (pulling) {
+        setPullDistance(e.touches[0].clientY * 0.5);
       }
     };
 
     const handleTouchEnd = () => {
-      if (!spinner || isRefreshing) return;
-
-      const pullDistance = touchEndY - touchStartY;
-      if (pullDistance > threshold) {
-        isRefreshing = true;
-        spinner.classList.add('loading');
+      if (pulling && pullDistance > 50) {
+        setIsRefreshing(true);
         setTimeout(() => {
           window.location.reload();
         }, 1000);
-      } else {
-        spinner.style.opacity = '0';
-        setTimeout(() => {
-          if (spinner) spinner.style.display = 'none';
-        }, 300);
       }
+      setPulling(false);
+      setPullDistance(0);
     };
 
-    document.addEventListener('touchstart', handleTouchStart);
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener("touchstart", handleTouchStart);
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
 
     return () => {
-      document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-      if (spinner && spinner.parentNode) {
-        spinner.parentNode.removeChild(spinner);
-      }
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
-  }, []);
+  }, [pulling, pullDistance]);
 
   const getCertificationStatus = (expiryDate: string) => {
     const today = new Date();
@@ -156,6 +123,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+
+      <div className="App">
+        <div className="pull-to-refresh" style={{ height: `${pullDistance}px`, opacity: pulling ? 1 : 0 }}>
+          <div className={`spinner ${isRefreshing ? "spinning" : ""}`}></div>
+        </div>
+      </div>
+
       {/* Header/Profile Section */}
       <header className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="text-center space-y-6">
@@ -215,10 +189,10 @@ function App() {
               <div className="space-y-6 text-gray-300">
                 <div className="text-justify leading-relaxed tracking-wide">
                   <p className="mb-4">
-                  I am a person who is tenacious, disciplined, and has good problem-solving skills. Have a willingness to learn new things and adapt quickly. Have experience as an IT Support, handling hardware and software troubleshooting.
+                    I am a person who is tenacious, disciplined, and has good problem-solving skills. Have a willingness to learn new things and adapt quickly. Have experience as an IT Support, handling hardware and software troubleshooting.
                   </p>
                   <p className="mb-4">
-                  Have completed studies with the Informatics Engineering program study and wish to continue my studies to a higher level.
+                    Have completed studies with the Informatics Engineering program study and wish to continue my studies to a higher level.
                   </p>
                 </div>
               </div>
