@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare, RefreshCw } from 'lucide-react';
 
 
 function App() {
@@ -7,20 +7,17 @@ function App() {
   useEffect(() => {
     let touchStartY = 0;
     let touchEndY = 0;
-    const threshold = 150; // Minimum pull distance to trigger refresh
+    const threshold = 150;
     let spinner: HTMLDivElement | null = null;
-    let isRefreshing = false;
+    let pulling = false;
 
-    // Create and append spinner element
     const createSpinner = () => {
       spinner = document.createElement('div');
       spinner.className = 'pull-to-refresh-spinner';
       spinner.innerHTML = `
-        <div class="spinner">
-          <svg viewBox="0 0 50 50">
-            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
-          </svg>
-        </div>
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M23 4V10H17M1 20V14H7M3.51 9C4.01717 7.56678 4.87913 6.2854 6.01547 5.27542C7.1518 4.26543 8.52547 3.55976 10.0083 3.22426C11.4911 2.88875 13.0348 2.93434 14.4952 3.35677C15.9556 3.77921 17.2853 4.56471 18.36 5.64L23 10M1 14L5.64 18.36C6.71475 19.4353 8.04437 20.2208 9.50481 20.6432C10.9652 21.0657 12.5089 21.1112 13.9917 20.7757C15.4745 20.4402 16.8482 19.7346 17.9845 18.7246C19.1209 17.7146 19.9828 16.4332 20.49 15" stroke-width="2"/>
+        </svg>
       `;
       document.body.appendChild(spinner);
     };
@@ -28,42 +25,57 @@ function App() {
     createSpinner();
 
     const handleTouchStart = (e: TouchEvent) => {
-      if (window.scrollY !== 0 || isRefreshing) return;
       touchStartY = e.touches[0].clientY;
+      pulling = true;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (window.scrollY !== 0 || isRefreshing) return;
+      if (!pulling) return;
+      
       touchEndY = e.touches[0].clientY;
       const pullDistance = touchEndY - touchStartY;
 
-      if (pullDistance > 0 && spinner) {
+      if (window.scrollY === 0 && pullDistance > 0 && spinner) {
+        e.preventDefault();
         spinner.style.display = 'block';
-        spinner.style.opacity = `${Math.min(pullDistance / threshold, 1)}`;
-        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 80)}px)`;
+        
+        const progress = Math.min(pullDistance / threshold, 1);
+        const translateY = Math.min(pullDistance / 2, 50);
+        const rotation = progress * 360;
+        
+        spinner.style.transform = `translateX(-50%) translateY(${translateY}px)`;
+        
+        if (progress >= 1) {
+          spinner.classList.add('active');
+        } else {
+          spinner.classList.remove('active');
+        }
       }
     };
 
     const handleTouchEnd = () => {
-      if (!spinner || isRefreshing) return;
+      pulling = false;
+      if (spinner) {
+        spinner.style.display = 'none';
+        spinner.classList.remove('active');
+      }
 
       const pullDistance = touchEndY - touchStartY;
-      if (pullDistance > threshold) {
-        isRefreshing = true;
-        spinner.classList.add('loading');
+      if (window.scrollY === 0 && pullDistance > threshold) {
+        if (spinner) {
+          spinner.style.display = 'block';
+          spinner.classList.add('active');
+        }
+        
+        // Add a small delay for the refresh animation
         setTimeout(() => {
           window.location.reload();
-        }, 1000);
-      } else {
-        spinner.style.opacity = '0';
-        setTimeout(() => {
-          if (spinner) spinner.style.display = 'none';
-        }, 300);
+        }, 500);
       }
     };
 
-    document.addEventListener('touchstart', handleTouchStart);
-    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchstart', handleTouchStart, { passive: false });
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
     document.addEventListener('touchend', handleTouchEnd);
 
     return () => {
