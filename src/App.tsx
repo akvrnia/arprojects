@@ -25,31 +25,19 @@ function App() {
     createSpinner();
 
     const handleTouchStart = (e: TouchEvent) => {
+      if (window.scrollY !== 0 || pulling) return;
       touchStartY = e.touches[0].clientY;
-      pulling = true;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (!pulling) return;
-      
+      if (window.scrollY !== 0 || pulling) return;
       touchEndY = e.touches[0].clientY;
       const pullDistance = touchEndY - touchStartY;
 
-      if (window.scrollY === 0 && pullDistance > 0 && spinner) {
-        e.preventDefault();
+      if (pullDistance > 0 && spinner) {
         spinner.style.display = 'block';
-        
-        const progress = Math.min(pullDistance / threshold, 1);
-        const translateY = Math.min(pullDistance / 2, 50);
-        const rotation = progress * 360;
-        
-        spinner.style.transform = `translateX(-50%) translateY(${translateY}px)`;
-        
-        if (progress >= 1) {
-          spinner.classList.add('active');
-        } else {
-          spinner.classList.remove('active');
-        }
+        spinner.style.opacity = `${Math.min(pullDistance / threshold, 1)}`;
+        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 80)}px)`;
       }
     };
 
