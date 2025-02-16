@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare, RefreshCw } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare} from 'lucide-react';
 
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
       if (pullDistance > 0 && spinner) {
         spinner.style.display = 'block';
         spinner.style.opacity = `${Math.min(pullDistance / threshold, 1)}`;
-        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 80)}px)`;
+        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 85)}px)`;
       }
     };
 
