@@ -70,8 +70,8 @@ body {
 .pull-to-refresh-spinner {
   display: none;
   position: fixed;
-  top: 20px;
-  left: 50%;
+  top: 167px;
+  left: 59%;
   transform: translateX(-50%);
   z-index: 1000;
   background: rgba(15, 23, 42, 0.8);
@@ -80,6 +80,8 @@ body {
   padding: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: rotate 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+             pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .pull-to-refresh-spinner.active {
