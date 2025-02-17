@@ -157,7 +157,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       {/* Header/Profile Section */}
-      <header className="container mx-auto px-4 py-12 max-w-4xl">
+      <header className="container mx-auto px-4 py-14 max-w-4xl">
         <div className="text-center space-y-6">
           <div className="relative inline-block">
             <img
