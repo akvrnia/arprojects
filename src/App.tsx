@@ -157,7 +157,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       {/* Header/Profile Section */}
-      <header className="container mx-auto px-4 py-14 max-w-4xl">
+      <header className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="text-center space-y-6">
           <div className="relative inline-block">
             <img
@@ -202,7 +202,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 space-y-16">
+      <main className="container mx-auto px-4 py-10 space-y-16">
         {/* About Me and Personal Details Section - Two Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* About Me Section - Full Width */}
@@ -357,7 +357,7 @@ function App() {
                     </span>
                   </div>
                   <p className="text-gray-400">{cert.organization}</p>
-                  <p className="text-gray-300 mt-2">ID: {cert.id}</p>
+                  <p className="text-gray-300 mt-2">ID : {cert.id}</p>
                   <p className="text-gray-300">
                     Expires :{" "}
                     {cert.expiryDate && !isNaN(Date.parse(cert.expiryDate))
