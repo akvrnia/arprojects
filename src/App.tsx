@@ -157,7 +157,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       {/* Header/Profile Section */}
-      <header className="container mx-auto px-4 py-20 max-w-4xl">
+      <header className="container mx-auto px-4 pt-20 pb-24 max-w-4xl">
         <div className="text-center space-y-6">
           <div className="relative inline-block">
             <img
@@ -202,12 +202,12 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-12 space-y-16">
+      <main className="container mx-auto px-4 pt-8 pb-8 space-y-16">
         {/* About Me and Personal Details Section - Two Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
           {/* About Me Section - Full Width */}
           <section className="animate-fade-in">
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-6 justify-center">
               <UserRoundCheck className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">About Me</h2>
             </div>
@@ -227,7 +227,7 @@ function App() {
 
           {/* Personal Details Section */}
           <section className="animate-fade-in">
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-6 justify-center">
               <NotebookPen className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Personal Details</h2>
             </div>
@@ -251,10 +251,10 @@ function App() {
         </div>
 
         {/* Two Column Layout for Education and Skills */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
           {/* Education Section */}
           <section className="animate-fade-in">
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-6 justify-center">
               <GraduationCap className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Education</h2>
             </div>
@@ -282,7 +282,7 @@ function App() {
 
           {/* Skills Section */}
           <section className="animate-fade-in">
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-6 justify-center">
               <Code className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Skills</h2>
             </div>
@@ -308,7 +308,7 @@ function App() {
 
         {/* Work Experience Section */}
         <section className="max-w-4xl mx-auto animate-fade-in">
-          <div className="flex items-center mb-6">
+          <div className="flex items-center mb-6 justify-center">
             <Briefcase className="w-6 h-6 text-blue-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400">Work Experience</h2>
           </div>
@@ -338,7 +338,7 @@ function App() {
 
         {/* Certifications Section */}
         <section className="max-w-4xl mx-auto animate-fade-in">
-          <div className="flex items-center mb-6">
+          <div className="flex items-center mb-6 justify-center">
             <Award className="w-6 h-6 text-blue-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400">Certifications</h2>
           </div>
