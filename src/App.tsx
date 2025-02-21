@@ -117,6 +117,13 @@ function App() {
 
   const certifications = [
     {
+      title: 'Technical Engineer Accreditation',
+      organization: 'Progress KEMP',
+      id: '-',
+      expiryDate: '2027-02-10',
+      verifyUrl: 'https://pec.progress.com/achievements/certificate/116891650',
+    },
+    {
       title: 'SE: Server Credential 2024',
       organization: 'Dell EMC',
       id: '7X63QBSQYJB4QBKK',
