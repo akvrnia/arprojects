@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare} from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
 
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
           spinner.style.display = 'block';
           spinner.classList.add('active');
         }
-        
+
         // Add a small delay for the refresh animation
         setTimeout(() => {
           window.location.reload();
@@ -210,10 +210,11 @@ function App() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 pt-8 pb-8 space-y-16">
+
         {/* About Me and Personal Details Section - Two Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
+        <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
           {/* About Me Section - Full Width */}
-          <section className="animate-fade-in">
+          <section className="col-span-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center">
               <UserRoundCheck className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">About Me</h2>
@@ -222,18 +223,15 @@ function App() {
               <div className="space-y-6 text-gray-300">
                 <div className="text-justify leading-relaxed tracking-wide">
                   <p className="mb-4">
-                  I am a person who is tenacious, disciplined, and has good problem-solving skills. Have a willingness to learn new things and adapt quickly. Have experience as an IT Support, handling hardware and software troubleshooting.
-                  </p>
-                  <p className="mb-4">
-                  Have completed studies with the Informatics Engineering program study and wish to continue my studies to a higher level.
+                    I am a person who is tenacious, disciplined, and has good problem-solving skills. Have a willingness to learn new things and adapt quickly. Have experience as an IT Support, handling hardware and software troubleshooting.
                   </p>
                 </div>
               </div>
             </div>
           </section>
-
+          
           {/* Personal Details Section */}
-          <section className="animate-fade-in">
+          <section className="col-span-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center">
               <NotebookPen className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Personal Details</h2>
@@ -255,12 +253,34 @@ function App() {
               </div>
             </div>
           </section>
+          {/* Skills Section */}
+          <section className="row-span-2 animate-fade-in">
+            <div className="flex items-center mb-6 justify-center">
+              <Code className="w-6 h-6 text-blue-400 mr-3" />
+              <h2 className="text-2xl font-bold text-blue-400">Technical Skills</h2>
+            </div>
+            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300 space-y-6">
+              {Object.entries(skills).map(([key, category]) => (
+                <div key={key}>
+                  <h3 className="text-lg font-semibold text-gray-300 mb-2">{category.title}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1 bg-blue-500/20 rounded-full text-sm hover:bg-blue-500/30 transition-colors duration-300"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
 
-        {/* Two Column Layout for Education and Skills */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
           {/* Education Section */}
-          <section className="animate-fade-in">
+          <section className="max-w-5xl mx-auto animate-fade-in">
             <div className="flex items-center mb-6 justify-center">
               <GraduationCap className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Education</h2>
@@ -287,34 +307,8 @@ function App() {
             </div>
           </section>
 
-          {/* Skills Section */}
-          <section className="animate-fade-in">
-            <div className="flex items-center mb-6 justify-center">
-              <Code className="w-6 h-6 text-blue-400 mr-3" />
-              <h2 className="text-2xl font-bold text-blue-400">Skills</h2>
-            </div>
-            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300 space-y-6">
-              {Object.entries(skills).map(([key, category]) => (
-                <div key={key}>
-                  <h3 className="text-lg font-semibold text-gray-300 mb-2">{category.title}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1 bg-blue-500/20 rounded-full text-sm hover:bg-blue-500/30 transition-colors duration-300"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-
         {/* Work Experience Section */}
-        <section className="max-w-4xl mx-auto animate-fade-in">
+        <section className="max-w-5xl mx-auto animate-fade-in">
           <div className="flex items-center mb-6 justify-center">
             <Briefcase className="w-6 h-6 text-blue-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400">Work Experience</h2>
@@ -344,7 +338,7 @@ function App() {
         </section>
 
         {/* Certifications Section */}
-        <section className="max-w-4xl mx-auto animate-fade-in">
+        <section className="max-w-5xl mx-auto animate-fade-in">
           <div className="flex items-center mb-6 justify-center">
             <Award className="w-6 h-6 text-blue-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400">Certifications</h2>
