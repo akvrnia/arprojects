@@ -212,7 +212,7 @@ function App() {
       <main className="container mx-auto px-4 pt-8 pb-8 space-y-16">
 
         {/* About Me and Personal Details Section - Two Columns */}
-        <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+        <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-9 gap-x-0 md:gap-x-7 max-w-5xl mx-auto">
           {/* About Me Section - Full Width */}
           <section className="col-span-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center">
