@@ -257,7 +257,7 @@ function App() {
           <section className="row-span-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center md:justify-start">
               <Code className="w-6 h-6 text-blue-400 mr-3" />
-              <h2 className="text-2xl font-bold text-blue-400">Technical Knowladge</h2>
+              <h2 className="text-2xl font-bold text-blue-400">Knowladge</h2>
             </div>
             <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300 space-y-6">
               {Object.entries(skills).map(([key, category]) => (
