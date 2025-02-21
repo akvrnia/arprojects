@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Code, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
 
 
 function App() {
@@ -91,26 +91,26 @@ function App() {
   const skills = {
     operatingsystem: {
       title: 'Operating System',
-      skills: ['Windows Server', 'Ubuntu', 'Debian', 'CentOS']
+      skills: ['Windows Server', 'Debian', 'CentOS']
     },
     virtualization: {
       title: 'Virtualization',
       skills: ['VMware', 'Proxmox']
     },
     cloud: {
-      title: 'Cloud & DevOps',
-      skills: ['Azure', 'Google Cloud']
+      title: 'Cloud Computing',
+      skills: ['Azure', 'GitHub']
     },
     pemrograman: {
       title: 'Programming',
-      skills: ['HTML', 'CSS', 'JavaScript', 'PHP', 'C#']
+      skills: ['HTML', 'CSS', 'PHP', 'C#']
     },
     networking: {
       title: 'Networking',
       skills: ['MikroTik', 'Cisco Switch', 'OSPF', 'PPTP', 'VLAN']
     },
     robotic: {
-      title: 'IoT & Robotic',
+      title: 'Internet of Things',
       skills: ['Arduino', 'ESP8266', 'ESP32']
     }
   };
@@ -256,7 +256,7 @@ function App() {
           {/* Skills Section */}
           <section className="row-span-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center md:justify-start">
-              <Code className="w-6 h-6 text-blue-400 mr-3" />
+              <Lightbulb className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Knowladge</h2>
             </div>
             <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300 space-y-6">
@@ -281,7 +281,7 @@ function App() {
 
           {/* Education Section */}
           <section className="max-w-6xl mx-auto animate-fade-in">
-            <div className="flex items-center mb-6 justify-center md:justify-start">
+            <div className="flex items-center mb-6 justify-center">
               <GraduationCap className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Education</h2>
             </div>
