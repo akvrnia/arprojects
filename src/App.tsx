@@ -212,10 +212,10 @@ function App() {
       <main className="container mx-auto px-4 pt-8 pb-8 space-y-16">
 
         {/* About Me and Personal Details Section - Two Columns */}
-        <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-9 gap-x-0 md:gap-x-7 max-w-5xl mx-auto">
+        <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-9 gap-x-0 md:gap-x-9 max-w-6xl mx-auto">
           {/* About Me Section - Full Width */}
           <section className="col-span-2 animate-fade-in">
-            <div className="flex items-center mb-6 justify-center">
+            <div className="flex items-center mb-6 justify-center md:justify-start">
               <UserRoundCheck className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">About Me</h2>
             </div>
@@ -232,7 +232,7 @@ function App() {
           
           {/* Personal Details Section */}
           <section className="col-span-2 animate-fade-in">
-            <div className="flex items-center mb-6 justify-center">
+            <div className="flex items-center mb-6 justify-center md:justify-start">
               <NotebookPen className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Personal Details</h2>
             </div>
@@ -255,9 +255,9 @@ function App() {
           </section>
           {/* Skills Section */}
           <section className="row-span-2 animate-fade-in">
-            <div className="flex items-center mb-6 justify-center">
+            <div className="flex items-center mb-6 justify-center md:justify-start">
               <Code className="w-6 h-6 text-blue-400 mr-3" />
-              <h2 className="text-2xl font-bold text-blue-400">Technical Skills</h2>
+              <h2 className="text-2xl font-bold text-blue-400">Technical Knowladge</h2>
             </div>
             <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300 space-y-6">
               {Object.entries(skills).map(([key, category]) => (
@@ -280,8 +280,8 @@ function App() {
         </div>
 
           {/* Education Section */}
-          <section className="max-w-5xl mx-auto animate-fade-in">
-            <div className="flex items-center mb-6 justify-center">
+          <section className="max-w-6xl mx-auto animate-fade-in">
+            <div className="flex items-center mb-6 justify-center md:justify-start">
               <GraduationCap className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Education</h2>
             </div>
@@ -308,7 +308,7 @@ function App() {
           </section>
 
         {/* Work Experience Section */}
-        <section className="max-w-5xl mx-auto animate-fade-in">
+        <section className="max-w-6xl mx-auto animate-fade-in">
           <div className="flex items-center mb-6 justify-center">
             <Briefcase className="w-6 h-6 text-blue-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400">Work Experience</h2>
@@ -338,7 +338,7 @@ function App() {
         </section>
 
         {/* Certifications Section */}
-        <section className="max-w-5xl mx-auto animate-fade-in">
+        <section className="max-w-6xl mx-auto animate-fade-in">
           <div className="flex items-center mb-6 justify-center">
             <Award className="w-6 h-6 text-blue-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400">Certifications</h2>
@@ -388,7 +388,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 max-w-5xl border-t border-gray-800">
+      <footer className="container mx-auto px-4 py-8 max-w-5xl border-gray-800">
         <div className="text-center text-gray-400 text-sm">
           © {new Date().getFullYear()} akvrnia. All rights reserved.
         </div>
