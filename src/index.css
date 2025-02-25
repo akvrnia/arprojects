@@ -97,3 +97,9 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+@media (min-width: 768px) {
+  .container {
+      max-width: 1024px
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MessagesSquare } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MapPinned, Languages } from 'lucide-react';
 
 
 function App() {
@@ -157,12 +157,13 @@ function App() {
     { icon: Calendar, label: 'Date of Birth', value: 'Mei 13, 1998' },
     { icon: MoonStar, label: 'Religion', value: 'Islam' },
     { icon: Syringe, label: 'Blood Type', value: 'B' },
+    { icon: MapPinned, label: 'Citizenship', value: 'Indonesia' },
     { icon: Gamepad2, label: 'Hobbies', value: 'Cooking, Badminton, Touring' },
-    { icon: MessagesSquare, label: 'Languages', value: 'Bahasa Indonesia, English, Japanese' },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+
+    <div className="min-h-screen bg-gradient-to-t from-gray-900 to-slate-900 text-white">
       {/* Header/Profile Section */}
       <header className="container mx-auto px-4 pt-20 pb-24 max-w-4xl">
         <div className="text-center space-y-6">
@@ -212,14 +213,14 @@ function App() {
       <main className="container mx-auto px-4 pt-8 pb-8 space-y-16">
 
         {/* About Me and Personal Details Section - Two Columns */}
-        <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-y-0 lg:gap-y-9 gap-x-0 md:gap-x-9 max-w-6xl mx-auto">
+        <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-y-9 lg:gap-y-9 gap-x-0 md:gap-x-9 max-w-6xl mx-auto">
           {/* About Me Section - Full Width */}
           <section className="col-span-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center md:justify-start">
               <UserRoundCheck className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">About Me</h2>
             </div>
-            <div className="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+            <div className="bg-slate-800/50 p-8 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <div className="space-y-6 text-gray-300">
                 <div className="text-justify leading-relaxed tracking-wide">
                   <p className="mb-4">
@@ -229,14 +230,13 @@ function App() {
               </div>
             </div>
           </section>
-          
           {/* Personal Details Section */}
-          <section className="col-span-2 animate-fade-in">
+          <section className="col-span-2 md:col-span-1 md:col-start-1 md:row-start-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center md:justify-start">
               <NotebookPen className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Personal Details</h2>
             </div>
-            <div className="bg-gray-800/40 py-4 px-4 rounded-lg backdrop-blur-sm hover:bg-gray-800/50 transition-colors duration-300">
+            <div className="bg-slate-800/40 py-4 px-4 rounded-lg backdrop-blur-sm hover:bg-slate-800/50 transition-colors duration-300">
               <div className="grid gap-0.5">
                 {personalDetails.map((detail, index) => (
                   <div
@@ -250,6 +250,44 @@ function App() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </section>
+          {/* Language Details Section */}
+          <section className="col-span-2 md:col-span-1 md:col-start-2 md:row-start-2 animate-fade-in">
+            <div className="flex items-center mb-6 justify-center md:justify-start">
+              <Languages className="w-6 h-6 text-blue-400 mr-3" />
+              <h2 className="text-2xl font-bold text-blue-400">Languages</h2>
+            </div>
+            <div className="bg-slate-800/40 py-4 px-4 rounded-lg backdrop-blur-sm hover:bg-slate-800/50 transition-colors duration-300">
+              <div className="space-y-5">
+                <div>
+                  <div className="mb-2 flex justify-between items-center">
+                    <h3 className="text-sm font-semibold text-gray-300 dark:text-white">Bahasa Indonesia</h3>
+                    <span className="text-sm text-gray-300 dark:text-white">95%</span>
+                  </div>
+                  <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={25} aria-valuemin={0} aria-valuemax={100}>
+                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-11/12"></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="mb-2 flex justify-between items-center">
+                    <h3 className="text-sm font-semibold text-gray-300 dark:text-white">English</h3>
+                    <span className="text-sm text-gray-300 dark:text-white">50%</span>
+                  </div>
+                  <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}>
+                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-1/2"></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="mb-2 flex justify-between items-center">
+                    <h3 className="text-sm font-semibold text-gray-300 dark:text-white">Japanese</h3>
+                    <span className="text-sm text-gray-300 dark:text-white">25%</span>
+                  </div>
+                  <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>
+                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-1/4"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -279,33 +317,33 @@ function App() {
           </section>
         </div>
 
-          {/* Education Section */}
-          <section className="max-w-6xl mx-auto animate-fade-in">
-            <div className="flex items-center mb-6 justify-center">
-              <GraduationCap className="w-6 h-6 text-blue-400 mr-3" />
-              <h2 className="text-2xl font-bold text-blue-400">Education</h2>
+        {/* Education Section */}
+        <section className="max-w-6xl mx-auto animate-fade-in">
+          <div className="flex items-center mb-6 justify-center">
+            <GraduationCap className="w-6 h-6 text-blue-400 mr-3" />
+            <h2 className="text-2xl font-bold text-blue-400">Education</h2>
+          </div>
+          <div className="space-y-6">
+            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+              <h3 className="text-lg font-semibold text-white">Bachelor of Informatics Engineering</h3>
+              <p className="text-blue-400">Nusa Mandiri University</p>
+              <p className="text-gray-400">2020 - 2022</p>
+              <p className="text-gray-300 mt-2">Major in Informatics Engineering</p>
             </div>
-            <div className="space-y-6">
-              <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-white">Bachelor of Informatics Engineering</h3>
-                <p className="text-blue-400">Nusa Mandiri University</p>
-                <p className="text-gray-400">2020 - 2022</p>
-                <p className="text-gray-300 mt-2">Major in Informatics Engineering</p>
-              </div>
-              <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-white">Associate of Computer Technology</h3>
-                <p className="text-blue-400">BSI University (Dual Degree)</p>
-                <p className="text-gray-400">2017 - 2020</p>
-                <p className="text-gray-300 mt-2">Major in Computer Technology</p>
-              </div>
-              <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-white">Computer Network Engineering</h3>
-                <p className="text-blue-400">SMK Negeri 1 Kota Bekasi</p>
-                <p className="text-gray-400">2013 - 2016</p>
-                <p className="text-gray-300 mt-2">Major in Computer Networking</p>
-              </div>
+            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+              <h3 className="text-lg font-semibold text-white">Associate of Computer Technology</h3>
+              <p className="text-blue-400">BSI University (Dual Degree)</p>
+              <p className="text-gray-400">2017 - 2020</p>
+              <p className="text-gray-300 mt-2">Major in Computer Technology</p>
             </div>
-          </section>
+            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+              <h3 className="text-lg font-semibold text-white">Computer Network Engineering</h3>
+              <p className="text-blue-400">SMK Negeri 1 Kota Bekasi</p>
+              <p className="text-gray-400">2013 - 2016</p>
+              <p className="text-gray-300 mt-2">Major in Computer Networking</p>
+            </div>
+          </div>
+        </section>
 
         {/* Work Experience Section */}
         <section className="max-w-6xl mx-auto animate-fade-in">
