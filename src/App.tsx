@@ -186,6 +186,12 @@ function App() {
         <li className="circle circle17"></li>
         <li className="circle circle18"></li>
         <li className="circle circle19"></li>
+        <li className="circle circle20"></li>
+        <li className="circle circle21"></li>
+        <li className="circle circle22"></li>
+        <li className="circle circle23"></li>
+        <li className="circle circle24"></li>
+        <li className="circle circle25"></li>
       </ul>
       
       {/* Header/Profile Section */}
