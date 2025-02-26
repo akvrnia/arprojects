@@ -88,6 +88,8 @@ function App() {
     return today <= expiry ? 'active' : 'inactive';
   };
 
+
+
   const skills = {
     operatingsystem: {
       title: 'Operating System',
@@ -163,7 +165,29 @@ function App() {
 
   return (
 
-    <div className="min-h-screen bg-gradient-to-t from-gray-900 to-slate-900 text-white">
+    <div className="relative min-h-screen text-white overflow-hidden">
+      <ul className="circles fixed top-0 left-0 w-full h-full flex flex-wrap">
+        <li className="circle circle1"></li>
+        <li className="circle circle2"></li>
+        <li className="circle circle3"></li>
+        <li className="circle circle4"></li>
+        <li className="circle circle5"></li>
+        <li className="circle circle6"></li>
+        <li className="circle circle7"></li>
+        <li className="circle circle8"></li>
+        <li className="circle circle9"></li>
+        <li className="circle circle10"></li>
+        <li className="circle circle11"></li>
+        <li className="circle circle12"></li>
+        <li className="circle circle13"></li>
+        <li className="circle circle14"></li>
+        <li className="circle circle15"></li>
+        <li className="circle circle16"></li>
+        <li className="circle circle17"></li>
+        <li className="circle circle18"></li>
+        <li className="circle circle19"></li>
+      </ul>
+      
       {/* Header/Profile Section */}
       <header className="container mx-auto px-4 pt-20 pb-24 max-w-4xl">
         <div className="text-center space-y-6">
@@ -211,7 +235,6 @@ function App() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 pt-8 pb-8 space-y-16">
-
         {/* About Me and Personal Details Section - Two Columns */}
         <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-y-9 lg:gap-y-9 gap-x-0 md:gap-x-9 max-w-6xl mx-auto">
           {/* About Me Section - Full Width */}
