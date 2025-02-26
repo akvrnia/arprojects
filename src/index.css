@@ -70,8 +70,8 @@ body {
 .pull-to-refresh-spinner {
   display: none;
   position: fixed;
-  top: 190px;
-  left: 57%;
+  top: 35.3%;
+  left: 53.9%;
   transform: translateX(-50%);
   z-index: 1000;
   background: rgba(15, 23, 42, 0.8);
