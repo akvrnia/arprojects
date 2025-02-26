@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     let touchStartY = 0;
     let touchEndY = 0;
-    const threshold = 150;
+    const threshold = 400; // Increased threshold for farther pull
     let spinner: HTMLDivElement | null = null;
     let pulling = false;
 
@@ -35,15 +35,21 @@ function App() {
       const pullDistance = touchEndY - touchStartY;
 
       if (pullDistance > 0 && spinner) {
-        spinner.style.display = 'block';
-        spinner.style.opacity = `${Math.min(pullDistance / threshold, 1)}`;
-        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 85)}px)`;
+        if (pullDistance >= threshold / 2) {
+          spinner.style.display = 'block';
+          spinner.classList.add('visible'); // Add visible class when half of threshold is reached
+        } else {
+          spinner.classList.remove('visible'); // Hide before reaching half threshold
+        }
+
+        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 120)}px)`;
       }
     };
 
     const handleTouchEnd = () => {
       pulling = false;
       if (spinner) {
+        spinner.classList.remove('visible');
         spinner.style.display = 'none';
         spinner.classList.remove('active');
       }
@@ -75,6 +81,7 @@ function App() {
       }
     };
   }, []);
+
 
   const getCertificationStatus = (expiryDate: string) => {
     const today = new Date();
