@@ -95,7 +95,7 @@ function App() {
     },
     virtualization: {
       title: 'Virtualization',
-      skills: ['VMware', 'Proxmox']
+      skills: ['VMware']
     },
     cloud: {
       title: 'Cloud Computing',
@@ -107,7 +107,7 @@ function App() {
     },
     networking: {
       title: 'Networking',
-      skills: ['MikroTik', 'Cisco Switch', 'OSPF', 'PPTP', 'VLAN']
+      skills: ['MikroTik', 'Cisco Switch', 'Dell Switch']
     },
     robotic: {
       title: 'Internet of Things',
@@ -297,7 +297,7 @@ function App() {
               <Lightbulb className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Knowladge</h2>
             </div>
-            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300 space-y-6">
+            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300 space-y-6">
               {Object.entries(skills).map(([key, category]) => (
                 <div key={key}>
                   <h3 className="text-lg font-semibold text-gray-300 mb-2">{category.title}</h3>
@@ -324,19 +324,19 @@ function App() {
             <h2 className="text-2xl font-bold text-blue-400">Education</h2>
           </div>
           <div className="space-y-6">
-            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <h3 className="text-lg font-semibold text-white">Bachelor of Informatics Engineering</h3>
               <p className="text-blue-400">Nusa Mandiri University</p>
               <p className="text-gray-400">2020 - 2022</p>
               <p className="text-gray-300 mt-2">Major in Informatics Engineering</p>
             </div>
-            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <h3 className="text-lg font-semibold text-white">Associate of Computer Technology</h3>
               <p className="text-blue-400">BSI University (Dual Degree)</p>
               <p className="text-gray-400">2017 - 2020</p>
               <p className="text-gray-300 mt-2">Major in Computer Technology</p>
             </div>
-            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <h3 className="text-lg font-semibold text-white">Computer Network Engineering</h3>
               <p className="text-blue-400">SMK Negeri 1 Kota Bekasi</p>
               <p className="text-gray-400">2013 - 2016</p>
@@ -352,7 +352,7 @@ function App() {
             <h2 className="text-2xl font-bold text-blue-400">Work Experience</h2>
           </div>
           <div className="space-y-6">
-            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <h3 className="text-lg font-semibold text-white">System Administrator</h3>
               <p className="text-blue-400">PT. Clarus Innovace Teknologi</p>
               <p className="text-gray-400">2024 - Present</p>
@@ -361,7 +361,7 @@ function App() {
                 <li>Engineer Onsite for Data Protection System</li>
               </ul>
             </div>
-            <div className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <h3 className="text-lg font-semibold text-white">IT Support</h3>
               <p className="text-blue-400">PT. Dinasti Kurnia Sejahtera</p>
               <p className="text-gray-400">2019 - 2020</p>
@@ -385,7 +385,7 @@ function App() {
             {certifications.map((cert) => {
               const status = getCertificationStatus(cert.expiryDate);
               return (
-                <div key={cert.id} className="bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-gray-800/70 transition-colors duration-300">
+                <div key={cert.id} className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-lg font-semibold text-white">{cert.title}</h3>
                     <span className={`px-2 py-1 text-xs font-medium rounded-full ${status === 'active'
