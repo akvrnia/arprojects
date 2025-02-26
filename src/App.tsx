@@ -259,7 +259,7 @@ function App() {
               <Languages className="w-6 h-6 text-blue-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400">Languages</h2>
             </div>
-            <div className="bg-slate-800/50 pt-6 pb-8 px-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
+            <div className="bg-slate-800/50 pt-7 pb-9 px-7 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <div className="space-y-5">
                 <div>
                   <div className="mb-2 flex justify-between items-center">
