@@ -122,35 +122,173 @@ body {
   position: absolute;
   display: block;
   list-style: none;
-  background: rgba(255, 255, 255, 0.082);
+  background: rgba(255, 255, 255, 0.099);
   bottom: -150px;
-  animation: floatAnimation 25s linear infinite;
+  animation: animate 25s linear infinite;
   border-radius: 50%;
-  animation-timing-function: ease-in-out;
+  /*animation-timing-function: ease-in-out;*/
 }
 
 /* Circle sizes and positions */
-/* Large Circles */
-.circle1 { width: 120px; height: 120px; left: 20%; animation-delay: 0s; animation-duration: 15s; }
-.circle7 { width: 140px; height: 140px; left: 38%; animation-delay: 6s; animation-duration: 18s; }
-.circle10 { width: 150px; height: 150px; left: 85%; animation-delay: 9s; animation-duration: 20s; }
-.circle19 { width: 130px; height: 130px; left: 70%; animation-delay: 18s; animation-duration: 23s; }
+.circle1 {
+  width: 80px;
+  height: 80px;
+  left: 25%;
+  animation-delay: 0s;
+  animation-duration: 50s;
+}
 
-/* Medium Circles */
-.circle2 { width: 80px; height: 80px; left: 5%; animation-delay: 1s; animation-duration: 12s; }
-.circle4 { width: 100px; height: 100px; left: 40%; animation-delay: 3s; animation-duration: 16s; }
-.circle6 { width: 110px; height: 110px; left: 15%; animation-delay: 5s; animation-duration: 20s; }
-.circle12 { width: 90px; height: 90px; left: 75%; animation-delay: 11s; animation-duration: 14s; }
-.circle15 { width: 95px; height: 95px; left: 30%; animation-delay: 14s; animation-duration: 20s; }
+.circle2 {
+  width: 20px;
+  height: 20px;
+  left: 10%;
+  animation-delay: 2s;
+  animation-duration: 62s;
+}
 
-/* Small Circles */
-.circle3 { width: 40px; height: 40px; left: 60%; animation-delay: 2s; animation-duration: 14s; }
-.circle5 { width: 30px; height: 30px; left: 55%; animation-delay: 4s; animation-duration: 11s; }
-.circle8 { width: 50px; height: 50px; left: 48%; animation-delay: 7s; animation-duration: 22s; }
-.circle11 { width: 60px; height: 60px; left: 2%; animation-delay: 10s; animation-duration: 27s; }
-.circle16 { width: 35px; height: 35px; left: 65%; animation-delay: 15s; animation-duration: 12s; }
-.circle22 { width: 45px; height: 45px; left: 88%; animation-delay: 21s; animation-duration: 18s; }
-.circle25 { width: 25px; height: 25px; left: 92%; animation-delay: 24s; animation-duration: 13s; }
+.circle3 {
+  width: 20px;
+  height: 20px;
+  left: 70%;
+  animation-delay: 4s;
+  animation-duration: 50s;
+}
+
+.circle4 {
+  width: 60px;
+  height: 60px;
+  left: 40%;
+  animation-delay: 0s;
+  animation-duration: 68s;
+}
+
+.circle5 {
+  width: 20px;
+  height: 20px;
+  left: 65%;
+  animation-delay: 0s;
+  animation-duration: 50s;
+}
+
+.circle6 {
+  width: 110px;
+  height: 110px;
+  left: 75%;
+  animation-delay: 3s;
+  animation-duration: 50s;
+}
+
+.circle7 {
+  width: 150px;
+  height: 150px;
+  left: 35%;
+  animation-delay: 7s;
+  animation-duration: 50s;
+}
+
+.circle8 {
+  width: 25px;
+  height: 25px;
+  left: 50%;
+  animation-delay: 15s;
+  animation-duration: 95s;
+}
+
+.circle9 {
+  width: 15px;
+  height: 15px;
+  left: 20%;
+  animation-delay: 2s;
+  animation-duration: 85s;
+}
+
+.circle10 {
+  width: 150px;
+  height: 150px;
+  left: 85%;
+  animation-delay: 0s;
+  animation-duration: 61s;
+}
+
+.circle11 {
+  width: 25px;
+  height: 25px;
+  left: 5%;
+  animation-delay: 20s;
+  animation-duration: 50s;
+}
+
+.circle12 {
+  width: 80px;
+  height: 80px;
+  left: 45%;
+  animation-delay: 22s;
+  animation-duration: 62s;
+}
+
+.circle13 {
+  width: 15px;
+  height: 15px;
+  left: 90%;
+  animation-delay: 24s;
+  animation-duration: 50s;
+}
+
+.circle14 {
+  width: 20px;
+  height: 20px;
+  left: 30%;
+  animation-delay: 20s;
+  animation-duration: 68s;
+}
+
+.circle15 {
+  width: 25px;
+  height: 25px;
+  left: 60%;
+  animation-delay: 20s;
+  animation-duration: 95s;
+}
+
+.circle16 {
+  width: 15px;
+  height: 15px;
+  left: 80%;
+  animation-delay: 25s;
+  animation-duration: 85s;
+}
+
+.circle17 {
+  width: 150px;
+  height: 150px;
+  left: 10%;
+  animation-delay: 30s;
+  animation-duration: 61s;
+}
+
+.circle18 {
+  width: 25px;
+  height: 25px;
+  left: 45%;
+  animation-delay: 32s;
+  animation-duration: 50s;
+}
+
+.circle19 {
+  width: 80px;
+  height: 80px;
+  left: 5%;
+  animation-delay: 34s;
+  animation-duration: 62s;
+}
+
+.circle20 {
+  width: 15px;
+  height: 15px;
+  left: 75%;
+  animation-delay: 36s;
+  animation-duration: 50s;
+}
 
 /* Animation */
 @keyframes animate {
@@ -182,6 +320,77 @@ body {
   }
 }
 
+@media (max-width: 757px) {
+  @keyframes animate {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(-5000px) rotate(720deg);
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 574px) {
+  @keyframes animate {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(-5050px) rotate(720deg);
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 429px) {
+  @keyframes animate {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(-5090px) rotate(720deg);
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 398px) {
+  @keyframes animate {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(-5390px) rotate(720deg);
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 341px) {
+  @keyframes animate {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(-5550px) rotate(720deg);
+      opacity: 0;
+    }
+  }
+}
+
+/*
 @media (max-width: 757px) {
   @keyframes floatAnimation {
     0% {
@@ -295,3 +504,6 @@ body {
     }
   }
 }
+
+*/
+

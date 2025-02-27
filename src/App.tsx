@@ -194,11 +194,6 @@ function App() {
         <li className="circle circle18"></li>
         <li className="circle circle19"></li>
         <li className="circle circle20"></li>
-        <li className="circle circle21"></li>
-        <li className="circle circle22"></li>
-        <li className="circle circle23"></li>
-        <li className="circle circle24"></li>
-        <li className="circle circle25"></li>
       </ul>
       
       {/* Header/Profile Section */}
@@ -208,7 +203,7 @@ function App() {
             <img
               src="https://lh3.googleusercontent.com/a/ACg8ocL3-UQvVrIX7mtbZSWG8wtD4uOSIfFiUnGm0ryKza6GLbLiYw=s288-c-no"
               alt="Profile"
-              className="w-40 h-40 rounded-full mx-auto border-4 border-blue-500 shadow-xl transform hover:scale-105 transition-transform duration-300"
+              className="w-40 h-40 rounded-full mx-auto border-4 border-blue-500 shadow-md transform hover:scale-105 transition-transform duration-300"
               loading="eager"
             />
             <div className="absolute inset-0 rounded-full bg-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
