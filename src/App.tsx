@@ -170,6 +170,12 @@ function App() {
     { icon: Gamepad2, label: 'Hobbies', value: 'Cooking, Badminton, Touring' },
   ];
 
+  const languages = [
+    { name: 'English', level: 'Business', proficiency: 75, color: '#c084fc' },
+    { name: 'Indonesia', level: 'Native', proficiency: 100, color: '#f472b6' },
+    { name: 'Japanese', level: 'Basic', proficiency: 40, color: '#818cf8' }
+  ];
+
   return (
 
     <div className="relative min-h-screen text-white overflow-hidden">
@@ -195,7 +201,7 @@ function App() {
         <li className="circle circle19"></li>
         <li className="circle circle20"></li>
       </ul>
-      
+
       {/* Header/Profile Section */}
       <header className="container mx-auto px-4 pt-20 pb-24 max-w-4xl">
         <div className="text-center space-y-6">
@@ -209,7 +215,7 @@ function App() {
             <div className="absolute inset-0 rounded-full bg-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
           </div>
 
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 gradient-text">
             Ari Kurniadi
           </h1>
 
@@ -217,24 +223,24 @@ function App() {
 
           <div className="flex flex-wrap justify-center gap-6 text-gray-300">
             <div className="flex items-center">
-              <MapPin className="w-4 h-4 mr-2" />
+              <MapPin className="w-4 h-4 mr-2 text-indigo-400" />
               <span>Bekasi, Indonesia</span>
             </div>
             <div className="flex items-center">
-              <Phone className="w-4 h-4 mr-2" />
+              <Phone className="w-4 h-4 mr-2 text-purple-400" />
               <span>+62 896 5207 3241</span>
             </div>
             <div className="flex items-center">
-              <Mail className="w-4 h-4 mr-2" />
+              <Mail className="w-4 h-4 mr-2 text-pink-400" />
               <span>akvrnia@gmail.com</span>
             </div>
           </div>
 
           <div className="flex justify-center space-x-4">
-            <a href="https://github.com/akvrnia" className="hover:text-blue-400 transition-colors">
+            <a href="https://github.com/akvrnia" className="glass-card p-3 rounded-full hover:text-indigo-400 transition-colors">
               <Github className="w-6 h-6" />
             </a>
-            <a href="https://www.linkedin.com/in/ari-kurniadi-117848325/" className="hover:text-blue-400 transition-colors">
+            <a href="https://www.linkedin.com/in/ari-kurniadi-117848325/" className="glass-card p-3 rounded-full hover:text-purple-400 transition-colorshover:text-blue-400 transition-colors">
               <Linkedin className="w-6 h-6" />
             </a>
           </div>
@@ -248,13 +254,13 @@ function App() {
           {/* About Me Section - Full Width */}
           <section className="col-span-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center md:justify-start">
-              <UserRoundCheck className="w-6 h-6 text-blue-400 mr-3" />
-              <h2 className="text-2xl font-bold text-blue-400">About Me</h2>
+              <UserRoundCheck className="w-6 h-6 text-indigo-400 mr-3" />
+              <h2 className="text-2xl font-bold text-blue-400 gradient-text">About Me</h2>
             </div>
             <div className="bg-slate-800/50 p-8 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <div className="space-y-6 text-gray-300">
                 <div className="text-justify leading-relaxed tracking-wide">
-                  <p className="mb-4">
+                  <p className="mb-2">
                     I am a person who is tenacious, disciplined, and has good problem-solving skills. Have a willingness to learn new things and adapt quickly. Have experience as an IT Support, handling hardware and software troubleshooting.
                   </p>
                 </div>
@@ -264,8 +270,8 @@ function App() {
           {/* Personal Details Section */}
           <section className="col-span-2 md:col-span-1 md:col-start-1 md:row-start-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center md:justify-start">
-              <NotebookPen className="w-6 h-6 text-blue-400 mr-3" />
-              <h2 className="text-2xl font-bold text-blue-400">Personal Details</h2>
+              <NotebookPen className="w-6 h-6 text-purple-400 mr-3" />
+              <h2 className="text-2xl font-bold text-blue-400 gradient-text">Personal Details</h2>
             </div>
             <div className="bg-slate-800/50 py-4 px-4 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <div className="grid gap-0.5">
@@ -287,36 +293,45 @@ function App() {
           {/* Language Details Section */}
           <section className="col-span-2 md:col-span-1 md:col-start-2 md:row-start-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center md:justify-start">
-              <Languages className="w-6 h-6 text-blue-400 mr-3" />
-              <h2 className="text-2xl font-bold text-blue-400">Languages</h2>
+              <Languages className="w-6 h-6 text-indigo-400 mr-3" />
+              <h2 className="text-2xl font-bold text-blue-400 gradient-text">Languages</h2>
             </div>
             <div className="bg-slate-800/50 pt-7 pb-9 px-7 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <div className="space-y-5">
                 <div>
+                  <div className="mb-0 flex justify-between items-center">
+                    <h3 className="text-Base font-semibold text-gray-300 dark:text-white">Bahasa Indonesia</h3>
+                  </div>
                   <div className="mb-2 flex justify-between items-center">
-                    <h3 className="text-sm font-semibold text-gray-300 dark:text-white">Bahasa Indonesia</h3>
-                    <span className="text-sm text-gray-300 dark:text-white">95%</span>
+                    <h3 className="text-xs text-pink-400 dark:text-white">Native</h3>
+                    <span className="text-xs text-pink-400 dark:text-white">99%</span>
                   </div>
                   <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={25} aria-valuemin={0} aria-valuemax={100}>
-                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-11/12"></div>
+                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-pink-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-[99%]"></div>
                   </div>
                 </div>
                 <div>
+                  <div className="mb-0 flex justify-between items-center">
+                    <h3 className="text-Base font-semibold text-gray-300 dark:text-white">English</h3>
+                  </div>
                   <div className="mb-2 flex justify-between items-center">
-                    <h3 className="text-sm font-semibold text-gray-300 dark:text-white">English</h3>
-                    <span className="text-sm text-gray-300 dark:text-white">50%</span>
+                    <h3 className="text-xs text-purple-400 dark:text-white">Intermediate</h3>
+                    <span className="text-xs text-purple-400 dark:text-white">70%</span>
                   </div>
                   <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}>
-                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-1/2"></div>
+                  <div className="flex flex-col justify-center rounded-full overflow-hidden bg-purple-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-[70%]"></div>
                   </div>
                 </div>
                 <div>
+                  <div className="mb-0 flex justify-between items-center">
+                    <h3 className="text-base font-semibold text-gray-300 dark:text-white">Japanese</h3>
+                  </div>
                   <div className="mb-2 flex justify-between items-center">
-                    <h3 className="text-sm font-semibold text-gray-300 dark:text-white">Japanese</h3>
-                    <span className="text-sm text-gray-300 dark:text-white">25%</span>
+                    <h3 className="text-xs text-indigo-400 dark:text-white">Basic</h3>
+                    <span className="text-xs text-indigo-400 dark:text-white">30%</span>
                   </div>
                   <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>
-                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-1/4"></div>
+                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-indigo-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-[30%]"></div>
                   </div>
                 </div>
               </div>
@@ -325,8 +340,8 @@ function App() {
           {/* Skills Section */}
           <section className="row-span-2 animate-fade-in">
             <div className="flex items-center mb-6 justify-center md:justify-start">
-              <Lightbulb className="w-6 h-6 text-blue-400 mr-3" />
-              <h2 className="text-2xl font-bold text-blue-400">Knowladge</h2>
+              <Lightbulb className="w-6 h-6 text-pink-400 mr-3" />
+              <h2 className="text-2xl font-bold text-blue-400 gradient-text">Knowladge</h2>
             </div>
             <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300 space-y-6">
               {Object.entries(skills).map(([key, category]) => (
@@ -351,8 +366,8 @@ function App() {
         {/* Education Section */}
         <section className="max-w-6xl mx-auto animate-fade-in">
           <div className="flex items-center mb-6 justify-center">
-            <GraduationCap className="w-6 h-6 text-blue-400 mr-3" />
-            <h2 className="text-2xl font-bold text-blue-400">Education</h2>
+            <GraduationCap className="w-6 h-6 text-purple-400 mr-3" />
+            <h2 className="text-2xl font-bold text-blue-400 gradient-text">Education</h2>
           </div>
           <div className="space-y-6">
             <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
@@ -379,8 +394,8 @@ function App() {
         {/* Work Experience Section */}
         <section className="max-w-6xl mx-auto animate-fade-in">
           <div className="flex items-center mb-6 justify-center">
-            <Briefcase className="w-6 h-6 text-blue-400 mr-3" />
-            <h2 className="text-2xl font-bold text-blue-400">Work Experience</h2>
+            <Briefcase className="w-6 h-6 text-indigo-400 mr-3" />
+            <h2 className="text-2xl font-bold text-blue-400 gradient-text">Work Experience</h2>
           </div>
           <div className="space-y-6">
             <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
@@ -409,8 +424,8 @@ function App() {
         {/* Certifications Section */}
         <section className="max-w-6xl mx-auto animate-fade-in">
           <div className="flex items-center mb-6 justify-center">
-            <Award className="w-6 h-6 text-blue-400 mr-3" />
-            <h2 className="text-2xl font-bold text-blue-400">Certifications</h2>
+            <Award className="w-6 h-6 text-pink-400 mr-3" />
+            <h2 className="text-2xl font-bold text-blue-400 gradient-text">Certifications</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {certifications.map((cert) => {
