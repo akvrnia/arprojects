@@ -30,7 +30,7 @@ function App() {
     const sections = document.querySelectorAll('.animate-on-scroll');
     sections.forEach((section, index) => {
       section.classList.add('opacity-0');
-      (section as HTMLElement).style.setProperty('--slide-delay', `${index * 0.1}s`);
+      (section as HTMLElement).style.setProperty('--slide-delay', `${index * 0.05}s`);
       observer.observe(section);
     });
 
