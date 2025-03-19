@@ -40,7 +40,7 @@ function App() {
   useEffect(() => {
     let touchStartY = 0;
     let touchEndY = 0;
-    const threshold = 290; // Increased threshold for farther pull
+    const threshold = 230; // Increased threshold for farther pull
     let spinner: HTMLDivElement | null = null;
     let pulling = false;
 
@@ -75,7 +75,7 @@ function App() {
           spinner.classList.remove('visible'); // Hide before reaching half threshold
         }
 
-        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 100)}px)`;
+        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 90)}px)`;
       }
     };
 
