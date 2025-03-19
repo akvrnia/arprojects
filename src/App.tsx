@@ -115,7 +115,6 @@ function App() {
     };
   }, []);
 
-
   const getCertificationStatus = (expiryDate: string) => {
     const today = new Date();
     const expiry = new Date(expiryDate);
@@ -127,8 +126,6 @@ function App() {
 
     return today <= expiry ? 'active' : 'inactive';
   };
-
-
 
   const skills = {
     operatingsystem: {
