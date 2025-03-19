@@ -239,13 +239,18 @@ function App() {
       <header className="container mx-auto px-4 pt-24 pb-16 max-w-4xl animate-on-scroll">
         <div className="text-center space-y-6">
           <div className="relative inline-block">
-            <img
-              src="https://lh3.googleusercontent.com/a/ACg8ocL3-UQvVrIX7mtbZSWG8wtD4uOSIfFiUnGm0ryKza6GLbLiYw=s288-c-no"
-              alt="Profile"
-              className="w-40 h-40 rounded-full mx-auto border-4 border-blue-500 shadow-md transform hover:scale-105 transition-transform duration-300"
-              loading="eager"
-            />
-            <div className="absolute inset-0 rounded-full bg-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
+            {/* Gradient Border */}
+            <div className="absolute inset-0 rounded-full p-1 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+
+            {/* Profile Image */}
+            <div className="relative rounded-full bg-purple p-1">
+              <img
+                src="https://lh3.googleusercontent.com/a/ACg8ocL3-UQvVrIX7mtbZSWG8wtD4uOSIfFiUnGm0ryKza6GLbLiYw=s288-c-no"
+                alt="Profile"
+                className="w-40 h-40 rounded-full mx-auto shadow-md transform hover:opacity-100 hover:shadow-[0_0_15px_rgba(139,92,246,0.8)] transition-transform duration-300"
+                loading="eager"
+              />
+            </div>
           </div>
 
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 gradient-text">
@@ -269,7 +274,7 @@ function App() {
             </div>
           </div>
 
-          <div className="flex justify-center space-x-4">
+          <div className="flex justify-center space-x-4 animate-on-scroll">
             <a href="https://github.com/akvrnia" className="glass-card p-3 rounded-full hover:text-indigo-400 transition-colors">
               <Github className="w-6 h-6" />
             </a>
@@ -330,17 +335,17 @@ function App() {
               <h2 className="text-2xl font-bold text-blue-400 gradient-text">Languages</h2>
             </div>
             <div className="bg-slate-800/50 pt-7 pb-9 px-7 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-            <div className="space-y-6" ref={progressContainerRef}>
+              <div className="space-y-6" ref={progressContainerRef}>
                 {languages.map((language, index) => (
                   <div key={index} className="progress-container">
-                    
-                      <div className="mb-0 flex justify-between items-center">
-                        <h3 className="text-base font-semibold text-gray-300">{language.name}</h3>
-                      </div>
-                      <div className="mb-2 flex justify-between items-center">
+
+                    <div className="mb-0 flex justify-between items-center">
+                      <h3 className="text-base font-semibold text-gray-300">{language.name}</h3>
+                    </div>
+                    <div className="mb-2 flex justify-between items-center">
                       <h3 className="text-xs" style={{ color: language.color }}>{language.level}</h3>
                       <span className="text-xs" style={{ color: language.color }}>{language.proficiency}%</span>
-                      </div>
+                    </div>
                     <div className="h-3 bg-white/10 rounded-full overflow-hidden">
                       <div
                         className="h-full progress-bar rounded-full"
@@ -490,7 +495,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 max-w-5xl border-gray-800">
+      <footer className="container mx-auto px-4 py-8 max-w-5xl border-gray-800 animate-on-scroll">
         <div className="text-center text-gray-400 text-sm">
           © {new Date().getFullYear()} akvrnia. All rights reserved.
         </div>
