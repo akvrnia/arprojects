@@ -1,8 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MapPinned, Languages } from 'lucide-react';
 
 
 function App() {
+  const progressContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    // Observe progress bars
+    if (progressContainerRef.current) {
+      const containers = progressContainerRef.current.querySelectorAll('.progress-container');
+      containers.forEach((container, index) => {
+        (container as HTMLElement).style.setProperty('--delay', `${index * 0.2}s`);
+        observer.observe(container);
+      });
+    }
+
+    // Observe all sections for slide-up animation
+    const sections = document.querySelectorAll('.animate-on-scroll');
+    sections.forEach((section, index) => {
+      section.classList.add('opacity-0');
+      (section as HTMLElement).style.setProperty('--slide-delay', `${index * 0.1}s`);
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let touchStartY = 0;
@@ -171,9 +204,9 @@ function App() {
   ];
 
   const languages = [
-    { name: 'English', level: 'Business', proficiency: 75, color: '#c084fc' },
-    { name: 'Indonesia', level: 'Native', proficiency: 100, color: '#f472b6' },
-    { name: 'Japanese', level: 'Basic', proficiency: 40, color: '#818cf8' }
+    { name: 'Indonesia', level: 'Native', proficiency: 99, color: '#f472b6' },
+    { name: 'English', level: 'Business', proficiency: 70, color: '#c084fc' },
+    { name: 'Japanese', level: 'Basic', proficiency: 30, color: '#818cf8' }
   ];
 
   return (
@@ -203,7 +236,7 @@ function App() {
       </ul>
 
       {/* Header/Profile Section */}
-      <header className="container mx-auto px-4 pt-20 pb-24 max-w-4xl">
+      <header className="container mx-auto px-4 pt-24 pb-16 max-w-4xl animate-on-scroll">
         <div className="text-center space-y-6">
           <div className="relative inline-block">
             <img
@@ -252,7 +285,7 @@ function App() {
         {/* About Me and Personal Details Section - Two Columns */}
         <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-y-9 lg:gap-y-9 gap-x-0 md:gap-x-9 max-w-6xl mx-auto">
           {/* About Me Section - Full Width */}
-          <section className="col-span-2 animate-fade-in">
+          <section className="col-span-2 animate-on-scroll">
             <div className="flex items-center mb-6 justify-center md:justify-start">
               <UserRoundCheck className="w-6 h-6 text-indigo-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400 gradient-text">About Me</h2>
@@ -268,7 +301,7 @@ function App() {
             </div>
           </section>
           {/* Personal Details Section */}
-          <section className="col-span-2 md:col-span-1 md:col-start-1 md:row-start-2 animate-fade-in">
+          <section className="col-span-2 md:col-span-1 md:col-start-1 md:row-start-2 animate-on-scroll">
             <div className="flex items-center mb-6 justify-center md:justify-start">
               <NotebookPen className="w-6 h-6 text-purple-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400 gradient-text">Personal Details</h2>
@@ -291,54 +324,39 @@ function App() {
             </div>
           </section>
           {/* Language Details Section */}
-          <section className="col-span-2 md:col-span-1 md:col-start-2 md:row-start-2 animate-fade-in">
+          <section className="col-span-2 md:col-span-1 md:col-start-2 md:row-start-2 animate-on-scroll">
             <div className="flex items-center mb-6 justify-center md:justify-start">
               <Languages className="w-6 h-6 text-indigo-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400 gradient-text">Languages</h2>
             </div>
             <div className="bg-slate-800/50 pt-7 pb-9 px-7 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-              <div className="space-y-5">
-                <div>
-                  <div className="mb-0 flex justify-between items-center">
-                    <h3 className="text-Base font-semibold text-gray-300 dark:text-white">Bahasa Indonesia</h3>
+            <div className="space-y-6" ref={progressContainerRef}>
+                {languages.map((language, index) => (
+                  <div key={index} className="progress-container">
+                    
+                      <div className="mb-0 flex justify-between items-center">
+                        <h3 className="text-base font-semibold text-gray-300">{language.name}</h3>
+                      </div>
+                      <div className="mb-2 flex justify-between items-center">
+                      <h3 className="text-xs" style={{ color: language.color }}>{language.level}</h3>
+                      <span className="text-xs" style={{ color: language.color }}>{language.proficiency}%</span>
+                      </div>
+                    <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+                      <div
+                        className="h-full progress-bar rounded-full"
+                        style={{
+                          width: `${language.proficiency}%`,
+                          backgroundColor: language.color,
+                        }}
+                      ></div>
+                    </div>
                   </div>
-                  <div className="mb-2 flex justify-between items-center">
-                    <h3 className="text-xs text-pink-400 dark:text-white">Native</h3>
-                    <span className="text-xs text-pink-400 dark:text-white">99%</span>
-                  </div>
-                  <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={25} aria-valuemin={0} aria-valuemax={100}>
-                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-pink-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-[99%]"></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="mb-0 flex justify-between items-center">
-                    <h3 className="text-Base font-semibold text-gray-300 dark:text-white">English</h3>
-                  </div>
-                  <div className="mb-2 flex justify-between items-center">
-                    <h3 className="text-xs text-purple-400 dark:text-white">Intermediate</h3>
-                    <span className="text-xs text-purple-400 dark:text-white">70%</span>
-                  </div>
-                  <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}>
-                  <div className="flex flex-col justify-center rounded-full overflow-hidden bg-purple-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-[70%]"></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="mb-0 flex justify-between items-center">
-                    <h3 className="text-base font-semibold text-gray-300 dark:text-white">Japanese</h3>
-                  </div>
-                  <div className="mb-2 flex justify-between items-center">
-                    <h3 className="text-xs text-indigo-400 dark:text-white">Basic</h3>
-                    <span className="text-xs text-indigo-400 dark:text-white">30%</span>
-                  </div>
-                  <div className="flex w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>
-                    <div className="flex flex-col justify-center rounded-full overflow-hidden bg-indigo-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500 w-[30%]"></div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </section>
           {/* Skills Section */}
-          <section className="row-span-2 animate-fade-in">
+          <section className="row-span-2 animate-on-scroll">
             <div className="flex items-center mb-6 justify-center md:justify-start">
               <Lightbulb className="w-6 h-6 text-pink-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400 gradient-text">Knowladge</h2>
@@ -364,7 +382,7 @@ function App() {
         </div>
 
         {/* Education Section */}
-        <section className="max-w-6xl mx-auto animate-fade-in">
+        <section className="max-w-6xl mx-auto animate-on-scroll">
           <div className="flex items-center mb-6 justify-center">
             <GraduationCap className="w-6 h-6 text-purple-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400 gradient-text">Education</h2>
@@ -392,7 +410,7 @@ function App() {
         </section>
 
         {/* Work Experience Section */}
-        <section className="max-w-6xl mx-auto animate-fade-in">
+        <section className="max-w-6xl mx-auto animate-on-scroll">
           <div className="flex items-center mb-6 justify-center">
             <Briefcase className="w-6 h-6 text-indigo-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400 gradient-text">Work Experience</h2>
@@ -422,7 +440,7 @@ function App() {
         </section>
 
         {/* Certifications Section */}
-        <section className="max-w-6xl mx-auto animate-fade-in">
+        <section className="max-w-6xl mx-auto animate-on-scroll">
           <div className="flex items-center mb-6 justify-center">
             <Award className="w-6 h-6 text-pink-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400 gradient-text">Certifications</h2>
