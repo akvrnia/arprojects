@@ -213,6 +213,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
+      
       <ul className="circles fixed top-0 left-0 w-full h-full flex flex-wrap">
         <li className="circle circle1"></li>
         <li className="circle circle2"></li>
