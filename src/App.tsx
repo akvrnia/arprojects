@@ -1,9 +1,55 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MapPinned, Languages } from 'lucide-react';
 
 
 function App() {
   const progressContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+  
+          // Find the correct index
+          const containers = progressContainerRef.current?.querySelectorAll('.progress-container');
+          if (!containers) return;
+  
+          const index = Array.from(containers).indexOf(entry.target as HTMLElement);
+          if (index === -1) return;
+  
+          // Animate percentage increase
+          const targetPercentage = languages[index].proficiency;
+          let currentPercentage = 0;
+  
+          const interval = setInterval(() => {
+            setAnimatedPercentages((prev) => {
+              const newPercentages = [...prev];
+              newPercentages[index] = currentPercentage;
+              return newPercentages;
+            });
+  
+            currentPercentage += 1;
+            if (currentPercentage > targetPercentage) {
+              clearInterval(interval);
+            }
+          }, 10); // Adjust speed
+  
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+  
+    if (progressContainerRef.current) {
+      const containers = progressContainerRef.current.querySelectorAll('.progress-container');
+      containers.forEach((container, index) => {
+        (container as HTMLElement).style.setProperty('--delay', `${index * 0.2}s`);
+        observer.observe(container);
+      });
+    }
+  
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -18,13 +64,13 @@ function App() {
     });
 
     // Observe progress bars
-    if (progressContainerRef.current) {
-      const containers = progressContainerRef.current.querySelectorAll('.progress-container');
-      containers.forEach((container, index) => {
-        (container as HTMLElement).style.setProperty('--delay', `${index * 0.2}s`);
-        observer.observe(container);
-      });
-    }
+    //if (progressContainerRef.current) {
+    //  const containers = progressContainerRef.current.querySelectorAll('.progress-container');
+    //  containers.forEach((container, index) => {
+    //    (container as HTMLElement).style.setProperty('--delay', `${index * 0.2}s`);
+    //    observer.observe(container);
+    //  });
+    //}
 
     // Observe all sections for slide-up animation
     const sections = document.querySelectorAll('.animate-on-scroll');
@@ -64,20 +110,20 @@ function App() {
 
     const handleTouchMove = (e: TouchEvent) => {
       if (!pulling) return;
-      
+
       touchEndY = e.touches[0].clientY;
       const pullDistance = touchEndY - touchStartY;
 
       if (window.scrollY === 0 && pullDistance > 0 && spinner) {
         e.preventDefault();
         spinner.style.display = 'block';
-        
+
         const progress = Math.min(pullDistance / threshold, 1);
         const translateY = Math.min(pullDistance / 2, 50);
         const rotation = progress * 360;
-        
+
         spinner.style.transform = `translateX(-50%) translateY(${translateY}px)`;
-        
+
         if (progress >= 1) {
           spinner.classList.add('active');
         } else {
@@ -99,7 +145,7 @@ function App() {
           spinner.style.display = 'block';
           spinner.classList.add('active');
         }
-        
+
         setTimeout(() => {
           window.location.reload();
         }, 500);
@@ -206,14 +252,18 @@ function App() {
   ];
 
   const languages = [
-    { name: 'Indonesia', level: 'Native', proficiency: 99, color: '#f472b6' },
-    { name: 'English', level: 'Business', proficiency: 70, color: '#c084fc' },
-    { name: 'Japanese', level: 'Basic', proficiency: 30, color: '#818cf8' }
+    { name: 'Indonesia', level: 'Native', proficiency: 98, color: '#f472b6' },
+    { name: 'English', level: 'Business', proficiency: 69, color: '#c084fc' },
+    { name: 'Japanese', level: 'Basic', proficiency: 29, color: '#818cf8' }
   ];
+
+  const [animatedPercentages, setAnimatedPercentages] = useState(
+    languages.map(() => 0) // Start all percentages at 0
+  );
 
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
-      
+
       <ul className="circles fixed top-0 left-0 w-full h-full flex flex-wrap">
         <li className="circle circle1"></li>
         <li className="circle circle2"></li>
@@ -346,7 +396,7 @@ function App() {
                     </div>
                     <div className="mb-2 flex justify-between items-center">
                       <h3 className="text-xs" style={{ color: language.color }}>{language.level}</h3>
-                      <span className="text-xs" style={{ color: language.color }}>{language.proficiency}%</span>
+                      <span className="text-xs" style={{ color: language.color }}>{animatedPercentages[index]}%</span>
                     </div>
                     <div className="h-3 bg-white/10 rounded-full overflow-hidden">
                       <div
