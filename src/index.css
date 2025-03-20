@@ -87,24 +87,6 @@ body {
   z-index: -1;
 }
 
-/* Animated background pattern */
-.bg-pattern {
-  background-image: 
-    radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, transparent 8%);
-  background-size: 3rem 3rem;
-  animation: patternMove 30s linear infinite;
-  opacity: 0.5;
-}
-
-@keyframes patternMove {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 3rem 3rem;
-  }
-}
-
 /* Glass effect */
 .glass-card {
   background: rgba(255, 255, 255, 0.05);

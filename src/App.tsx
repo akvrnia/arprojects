@@ -40,7 +40,7 @@ function App() {
   useEffect(() => {
     let touchStartY = 0;
     let touchEndY = 0;
-    const threshold = 230; // Increased threshold for farther pull
+    const threshold = 190;
     let spinner: HTMLDivElement | null = null;
     let pulling = false;
 
@@ -58,31 +58,37 @@ function App() {
     createSpinner();
 
     const handleTouchStart = (e: TouchEvent) => {
-      if (window.scrollY !== 0 || pulling) return;
       touchStartY = e.touches[0].clientY;
+      pulling = true;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (window.scrollY !== 0 || pulling) return;
+      if (!pulling) return;
+      
       touchEndY = e.touches[0].clientY;
       const pullDistance = touchEndY - touchStartY;
 
-      if (pullDistance > 0 && spinner) {
-        if (pullDistance >= threshold / 2) {
-          spinner.style.display = 'block';
-          spinner.classList.add('visible'); // Add visible class when half of threshold is reached
+      if (window.scrollY === 0 && pullDistance > 0 && spinner) {
+        e.preventDefault();
+        spinner.style.display = 'block';
+        
+        const progress = Math.min(pullDistance / threshold, 1);
+        const translateY = Math.min(pullDistance / 2, 50);
+        const rotation = progress * 360;
+        
+        spinner.style.transform = `translateX(-50%) translateY(${translateY}px)`;
+        
+        if (progress >= 1) {
+          spinner.classList.add('active');
         } else {
-          spinner.classList.remove('visible'); // Hide before reaching half threshold
+          spinner.classList.remove('active');
         }
-
-        spinner.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 90)}px)`;
       }
     };
 
     const handleTouchEnd = () => {
       pulling = false;
       if (spinner) {
-        spinner.classList.remove('visible');
         spinner.style.display = 'none';
         spinner.classList.remove('active');
       }
@@ -93,8 +99,7 @@ function App() {
           spinner.style.display = 'block';
           spinner.classList.add('active');
         }
-
-        // Add a small delay for the refresh animation
+        
         setTimeout(() => {
           window.location.reload();
         }, 500);
@@ -207,7 +212,6 @@ function App() {
   ];
 
   return (
-
     <div className="relative min-h-screen text-white overflow-hidden">
       <ul className="circles fixed top-0 left-0 w-full h-full flex flex-wrap">
         <li className="circle circle1"></li>
