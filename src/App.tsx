@@ -25,15 +25,16 @@ function App() {
           const interval = setInterval(() => {
             setAnimatedPercentages((prev) => {
               const newPercentages = [...prev];
-              newPercentages[index] = currentPercentage;
-              return newPercentages;
-            });
   
-            currentPercentage += 1;
-            if (currentPercentage > targetPercentage) {
-              clearInterval(interval);
-            }
-          }, 10); // Adjust speed
+              if (newPercentages[index] < targetPercentage) {
+                newPercentages[index] += 1;
+                return newPercentages;
+              } else {
+                clearInterval(interval);
+                return prev;
+              }
+            });
+          }, 11); // Adjust speed
   
           observer.unobserve(entry.target);
         }
@@ -252,9 +253,9 @@ function App() {
   ];
 
   const languages = [
-    { name: 'Indonesia', level: 'Native', proficiency: 98, color: '#f472b6' },
-    { name: 'English', level: 'Business', proficiency: 69, color: '#c084fc' },
-    { name: 'Japanese', level: 'Basic', proficiency: 29, color: '#818cf8' }
+    { name: 'Indonesia', level: 'Native', proficiency: 97, color: '#f472b6' },
+    { name: 'English', level: 'Business', proficiency: 60, color: '#c084fc' },
+    { name: 'Japanese', level: 'Basic', proficiency: 25, color: '#818cf8' }
   ];
 
   const [animatedPercentages, setAnimatedPercentages] = useState(
@@ -396,7 +397,7 @@ function App() {
                     </div>
                     <div className="mb-2 flex justify-between items-center">
                       <h3 className="text-xs" style={{ color: language.color }}>{language.level}</h3>
-                      <span className="text-xs" style={{ color: language.color }}>{animatedPercentages[index]}%</span>
+                      <span className="text-xs" style={{ color: language.color }}>{animatedPercentages[index] || 0}%</span>
                     </div>
                     <div className="h-3 bg-white/10 rounded-full overflow-hidden">
                       <div
