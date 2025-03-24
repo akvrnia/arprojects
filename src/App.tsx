@@ -1,54 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MapPinned, Languages } from 'lucide-react';
+import { Github, CalendarRange, Building2, Feather, Zap, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MapPinned, Languages } from 'lucide-react';
 
 
 function App() {
-  const progressContainerRef = useRef<HTMLDivElement>(null);
+  const languagesContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate');
-  
-          // Find the correct index
-          const containers = progressContainerRef.current?.querySelectorAll('.progress-container');
-          if (!containers) return;
-  
-          const index = Array.from(containers).indexOf(entry.target as HTMLElement);
-          if (index === -1) return;
-  
-          // Animate percentage increase
-          const targetPercentage = languages[index].proficiency;
-          let currentPercentage = 0;
-  
-          const interval = setInterval(() => {
-            setAnimatedPercentages((prev) => {
-              const newPercentages = [...prev];
-  
-              if (newPercentages[index] < targetPercentage) {
-                newPercentages[index] += 1;
-                return newPercentages;
-              } else {
-                clearInterval(interval);
-                return prev;
-              }
-            });
-          }, 11); // Adjust speed
-  
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
-  
-    if (progressContainerRef.current) {
-      const containers = progressContainerRef.current.querySelectorAll('.progress-container');
-      containers.forEach((container, index) => {
-        (container as HTMLElement).style.setProperty('--delay', `${index * 0.2}s`);
-        observer.observe(container);
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    if (languagesContainerRef.current) {
+      const cards = languagesContainerRef.current.querySelectorAll('.language-card');
+      cards.forEach((card, index) => {
+        (card as HTMLElement).style.setProperty('--delay', `${index * 0.1}s`);
+        observer.observe(card);
       });
     }
-  
+
+    const sections = document.querySelectorAll('.animate-on-scroll');
+    sections.forEach((section, index) => {
+      section.classList.add('opacity-0');
+      (section as HTMLElement).style.setProperty('--slide-delay', `${index * 0.1}s`);
+      observer.observe(section);
+    });
+
     return () => observer.disconnect();
   }, []);
 
@@ -63,15 +47,6 @@ function App() {
     }, {
       threshold: 0.1
     });
-
-    // Observe progress bars
-    //if (progressContainerRef.current) {
-    //  const containers = progressContainerRef.current.querySelectorAll('.progress-container');
-    //  containers.forEach((container, index) => {
-    //    (container as HTMLElement).style.setProperty('--delay', `${index * 0.2}s`);
-    //    observer.observe(container);
-    //  });
-    //}
 
     // Observe all sections for slide-up animation
     const sections = document.querySelectorAll('.animate-on-scroll');
@@ -179,6 +154,19 @@ function App() {
     return today <= expiry ? 'active' : 'inactive';
   };
 
+  const aboutHighlights = [
+    {
+      icon: Feather,
+      title: 'Character & Personality',
+      description: 'I am a person who is tenacious, disciplined, and has good problem-solving skills.'
+    },
+    {
+      icon: Zap,
+      title: 'Team Collaboration',
+      description: 'Have a willingness to learn new things and adapt quickly.'
+    }
+  ];
+
   const skills = {
     operatingsystem: {
       title: 'Operating System',
@@ -253,14 +241,40 @@ function App() {
   ];
 
   const languages = [
-    { name: 'Indonesia', level: 'Native', proficiency: 97, color: '#f472b6' },
-    { name: 'English', level: 'Business', proficiency: 60, color: '#c084fc' },
-    { name: 'Japanese', level: 'Basic', proficiency: 25, color: '#818cf8' }
+    { name: 'Bahasa Indonesia', level: 'Native', proficiency: 'Native Speaker', color: '#60a5fa', icon: '🇺🇸' },
+    { name: 'English', level: 'Intermediate', proficiency: '-', color: '#c084fc', icon: '🇯🇵' },
+    { name: 'Japanese', level: 'Basic', proficiency: '-', color: '#f472b6', icon: '🇪🇸' }
   ];
 
-  const [animatedPercentages, setAnimatedPercentages] = useState(
-    languages.map(() => 0) // Start all percentages at 0
-  );
+  const workExperience = [
+    {
+      title: 'System Administrator',
+      company: 'PT Clarus Innovace Teknologi',
+      location: 'Jakarta, Indonesia',
+      period: '2024 - Present',
+      logo: 'https://clarus-it.co.id/wp-content/uploads/2021/12/PT-Clarus-Innovace-Teknologi-1.svg',
+      achievements: [
+        'Engineer Onsite for Maintenance New Core Banking System',
+        'Engineer Onsite for Data Protection System'
+      ],
+      technologies: ['Dell EMC', 'VMware', 'KEMP Progress', 'Grafana', 'Windows Server']
+    },
+    {
+      title: 'IT Support',
+      company: 'PT Dinasti Kurnia Sejahtera',
+      location: 'Bekasi, Indonesia',
+      period: '2019 - 2020',
+      logo: 'https://dinastikurnia.co.id/wp-content/uploads/2019/01/dinasti-kurnia.jpg',
+      achievements: [
+        'Corrective Maintenance IT Infrastructure',
+        'Access Control Firewall Administrator',
+        'IT Helpdesk',
+        'PC Deployment',
+        'Server Storage Deployment (NAS)'
+      ],
+      technologies: ['Mikrotik', 'QNAP', 'Ubiquiti', 'CISCO Switch']
+    }
+  ];
 
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
@@ -349,12 +363,29 @@ function App() {
               <h2 className="text-2xl font-bold text-blue-400 gradient-text">About Me</h2>
             </div>
             <div className="bg-slate-800/50 p-8 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-              <div className="space-y-6 text-gray-300">
+              <div className="space-y-6 text-gray-300 mb-0">
                 <div className="text-justify leading-relaxed tracking-wide">
-                  <p className="mb-2">
-                    I am a person who is tenacious, disciplined, and has good problem-solving skills. Have a willingness to learn new things and adapt quickly. Have experience as an IT Support, handling hardware and software troubleshooting.
-                  </p>
+                  {/*<p className="text-gray-300 leading-relaxed">
+                    
+                  </p>*/}
                 </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-0">
+                {aboutHighlights.map((highlight, index) => (
+                  <div
+                    key={index}
+                    className="p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
+                  >
+                    <div className="flex items-center mb-2">
+                      <highlight.icon className="w-5 h-5 text-indigo-400 group-hover:text-indigo-300 transition-colors" />
+                      <h3 className="ml-2 text-white font-medium">{highlight.title}</h3>
+                    </div>
+                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed tracking-wide">
+                      {highlight.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -387,30 +418,27 @@ function App() {
               <Languages className="w-6 h-6 text-indigo-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400 gradient-text">Languages</h2>
             </div>
-            <div className="bg-slate-800/50 pt-7 pb-9 px-7 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-              <div className="space-y-6" ref={progressContainerRef}>
-                {languages.map((language, index) => (
-                  <div key={index} className="progress-container">
-
-                    <div className="mb-0 flex justify-between items-center">
-                      <h3 className="text-base font-semibold text-gray-300">{language.name}</h3>
+            <div className="grid grid-cols-1 gap-4" ref={languagesContainerRef}>
+              {languages.map((language, index) => (
+                <div
+                  key={index}
+                  className="language-card glass-card p-6 rounded-lg transition-all duration-300"
+                  style={{ transitionDelay: `${index * 0.1}s` }}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center">
+                      <h3 className="text-base font-semibold text-white">{language.name}</h3>
                     </div>
-                    <div className="mb-2 flex justify-between items-center">
-                      <h3 className="text-xs" style={{ color: language.color }}>{language.level}</h3>
-                      <span className="text-xs" style={{ color: language.color }}>{animatedPercentages[index] || 0}%</span>
-                    </div>
-                    <div className="h-3 bg-white/10 rounded-full overflow-hidden">
-                      <div
-                        className="h-full progress-bar rounded-full"
-                        style={{
-                          width: `${language.proficiency}%`,
-                          backgroundColor: language.color,
-                        }}
-                      ></div>
+                    <div
+                      className="px-3 py-1 rounded-full text-sm font-medium"
+                      style={{ backgroundColor: `${language.color}20`, color: language.color }}
+                    >
+                      {language.level}
                     </div>
                   </div>
-                ))}
-              </div>
+                  <p className="text-xs text-gray-400">{language.proficiency}</p>
+                </div>
+              ))}
             </div>
           </section>
           {/* Skills Section */}
@@ -473,27 +501,60 @@ function App() {
             <Briefcase className="w-6 h-6 text-indigo-400 mr-3" />
             <h2 className="text-2xl font-bold text-blue-400 gradient-text">Work Experience</h2>
           </div>
-          <div className="space-y-6">
-            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-              <h3 className="text-lg font-semibold text-white">System Administrator</h3>
-              <p className="text-blue-400">PT. Clarus Innovace Teknologi</p>
-              <p className="text-gray-400">2024 - Present</p>
-              <ul className="list-disc list-inside text-gray-300 mt-2 space-y-2">
-                <li>Engineer Onsite for Maintenance New Core Banking System</li>
-                <li>Engineer Onsite for Data Protection System</li>
-              </ul>
-            </div>
-            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-              <h3 className="text-lg font-semibold text-white">IT Support</h3>
-              <p className="text-blue-400">PT. Dinasti Kurnia Sejahtera</p>
-              <p className="text-gray-400">2019 - 2020</p>
-              <ul className="list-disc list-inside text-gray-300 mt-2 space-y-2">
-                <li>Corrective Maintenance IT Infrastructure</li>
-                <li>Access Control Firewall Administrator</li>
-                <li>IT Helpdesk</li>
-                <li>PC Deployment</li>
-              </ul>
-            </div>
+          <div className="space-y-8">
+            {workExperience.map((job, index) => (
+              <div key={index} className="glass-card p-6 rounded-lg transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                  <div className="flex items-start space-x-4">
+                  {/*<img 
+                        src={job.logo} 
+                        alt={`${job.company} logo`}
+                        className="w-12 h-12 rounded-lg object-contain bg-white p-2"
+                      />*/}
+                    <div>
+                      <h3 className="text-xl font-semibold text-white">{job.title}</h3>
+                      <div className="flex flex-wrap items-center gap-2 mt-3">
+                        <div className="flex items-center text-indigo-400">
+                          <Building2 className="w-4 h-4 mr-1" />
+                          <span>{job.company}</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-2 mt-1">
+                        <div className="mt-1 md:mt-0 flex items-center text-purple-400">
+                          <CalendarRange className="w-4 h-4 mr-1" />
+                          <span>{job.period}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 space-y-4">
+                  <div>
+                    <h4 className="text-gray-300 font-medium mb-2">Experience:</h4>
+                    <ul className="grid gap-2 sm:grid-cols-2">
+                      {job.achievements.map((achievement, i) => (
+                        <li key={i} className="flex items-start text-gray-300 group">
+                          <span className="inline-block w-2 h-2 mt-2 mr-2 bg-indigo-500 rounded-full transition-colors" />
+                          <span className="flex-1">{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-gray-300 font-medium mb-2">Technologies</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {job.technologies.map((tech, i) => (
+                        <span key={i} className="px-3 py-1 text-sm rounded-full text-gray-200 bg-white/10 hover:bg-white/20 transition-colors">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

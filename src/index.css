@@ -89,13 +89,25 @@ body {
 
 /* Glass effect */
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(30, 41, 59, 0.5);
   backdrop-filter: blur(10px);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(30, 41, 59, 0.7);
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Language card animation */
+.language-card {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+}
+
+.language-card.animate {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
 /* Gradient text */
@@ -106,6 +118,51 @@ body {
   color: transparent;
   animation: gradientFlow 6s linear infinite;
   background-size: 200% 200%;
+}
+
+/* Work experience card hover effect */
+.work-achievement {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.work-achievement::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: rgb(99 102 241 / 0.5);
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.work-achievement:hover::before {
+  background-color: rgb(99 102 241);
+  transform: scale(1.2);
+}
+
+/* About section card hover effects */
+.about-highlight {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-highlight:hover {
+  transform: translateY(-2px);
+}
+
+.prose {
+  max-width: 65ch;
+  line-height: 1.75;
+}
+
+.prose p {
+  margin-bottom: 1.25em;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
 }
 
 @keyframes gradientFlow {
