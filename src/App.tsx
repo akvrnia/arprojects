@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Github, CalendarRange, Building2, Feather, Zap, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MapPinned, Languages } from 'lucide-react';
+import { Github, BookMarked, CalendarRange, Building2, Feather, Zap, Linkedin, Mail, MapPin, Phone, GraduationCap, Briefcase, Award, UserRoundCheck, Lightbulb, ExternalLink, Calendar, Syringe, Gamepad2, NotebookPen, MoonStar, MapPinned, Languages } from 'lucide-react';
 
 
 function App() {
@@ -276,6 +276,27 @@ function App() {
     }
   ];
 
+  const education = [
+    {
+      degree: 'Bachelor of Informatics Engineering',
+      school: 'Nusa Mandiri University',
+      period: '2020 - 2022',
+      description: 'Major in Informatics Engineering',
+    },
+    {
+      degree: 'Associate of Computer Technology',
+      school: 'BSI University (Dual Degree)',
+      period: '2017 - 2020',
+      description: 'Major in Computer Technology',
+    },
+    {
+      degree: 'Computer Network Engineering',
+      school: 'SMK Negeri 1 Kota Bekasi',
+      period: '2013 - 2016',
+      description: 'Major in Computer Networking',
+    }
+  ];
+
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
 
@@ -398,11 +419,8 @@ function App() {
             <div className="bg-slate-800/50 py-4 px-4 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <div className="grid gap-0.5">
                 {personalDetails.map((detail, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start space-x-4 group hover:bg-gray-700/30 p-3 rounded-lg transition-colors duration-300"
-                  >
-                    <detail.icon className="w-5 h-5 text-blue-400 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                  <div key={index} className="flex items-start space-x-4 group hover:bg-gray-700/30 p-2 rounded-lg transition-colors duration-300">
+                    <detail.icon className="w-5 h-5 text-indigo-400 mt-1 group-hover:scale-110 transition-transform duration-300" />
                     <div>
                       <h3 className="text-gray-400 text-sm">{detail.label}</h3>
                       <p className="text-gray-200">{detail.value}</p>
@@ -474,24 +492,28 @@ function App() {
             <h2 className="text-2xl font-bold text-blue-400 gradient-text">Education</h2>
           </div>
           <div className="space-y-6">
-            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-              <h3 className="text-lg font-semibold text-white">Bachelor of Informatics Engineering</h3>
-              <p className="text-blue-400">Nusa Mandiri University</p>
-              <p className="text-gray-400">2020 - 2022</p>
-              <p className="text-gray-300 mt-2">Major in Informatics Engineering</p>
-            </div>
-            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-              <h3 className="text-lg font-semibold text-white">Associate of Computer Technology</h3>
-              <p className="text-blue-400">BSI University (Dual Degree)</p>
-              <p className="text-gray-400">2017 - 2020</p>
-              <p className="text-gray-300 mt-2">Major in Computer Technology</p>
-            </div>
-            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
-              <h3 className="text-lg font-semibold text-white">Computer Network Engineering</h3>
-              <p className="text-blue-400">SMK Negeri 1 Kota Bekasi</p>
-              <p className="text-gray-400">2013 - 2016</p>
-              <p className="text-gray-300 mt-2">Major in Computer Networking</p>
-            </div>
+            {education.map((edu, index) => (
+              <div key={index} className="glass-card p-6 rounded-lg transition-all duration-300 hover:transform group">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-white">
+                    {edu.degree}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 mt-2">
+                  <div className="flex items-center text-indigo-400">
+                    <BookMarked className="w-4 h-4 mr-1" />
+                    <span>{edu.school}</span>
+                  </div>
+                </div>
+                <div className="mt-1 md:mt-0 flex items-center text-purple-400">
+                  <CalendarRange className="w-4 h-4 mr-1" />
+                  <span>{edu.period}</span>
+                </div>
+                <div>
+                  <p className="text-gray-300 mt-2">{edu.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -506,7 +528,7 @@ function App() {
               <div key={index} className="glass-card p-6 rounded-lg transition-all duration-300">
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                   <div className="flex items-start space-x-4">
-                  {/*<img 
+                    {/*<img 
                         src={job.logo} 
                         alt={`${job.company} logo`}
                         className="w-12 h-12 rounded-lg object-contain bg-white p-2"
