@@ -299,30 +299,6 @@ function App() {
 
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
-
-      <ul className="circles fixed top-0 left-0 w-full h-full flex flex-wrap">
-        <li className="circle circle1"></li>
-        <li className="circle circle2"></li>
-        <li className="circle circle3"></li>
-        <li className="circle circle4"></li>
-        <li className="circle circle5"></li>
-        <li className="circle circle6"></li>
-        <li className="circle circle7"></li>
-        <li className="circle circle8"></li>
-        <li className="circle circle9"></li>
-        <li className="circle circle10"></li>
-        <li className="circle circle11"></li>
-        <li className="circle circle12"></li>
-        <li className="circle circle13"></li>
-        <li className="circle circle14"></li>
-        <li className="circle circle15"></li>
-        <li className="circle circle16"></li>
-        <li className="circle circle17"></li>
-        <li className="circle circle18"></li>
-        <li className="circle circle19"></li>
-        <li className="circle circle20"></li>
-      </ul>
-
       {/* Header/Profile Section */}
       <header className="container mx-auto px-4 pt-24 pb-16 max-w-4xl animate-on-scroll">
         <div className="text-center space-y-6">
