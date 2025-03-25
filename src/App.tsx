@@ -419,7 +419,7 @@ function App() {
             <div className="bg-slate-800/50 py-4 px-4 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <div className="grid gap-0.5">
                 {personalDetails.map((detail, index) => (
-                  <div key={index} className="flex items-start space-x-4 group hover:bg-gray-700/30 p-2 rounded-lg transition-colors duration-300">
+                  <div key={index} className="flex items-start space-x-4 group hover:bg-gray-700/30 px-3 py-2 rounded-lg transition-colors duration-300">
                     <detail.icon className="w-5 h-5 text-indigo-400 mt-1 group-hover:scale-110 transition-transform duration-300" />
                     <div>
                       <h3 className="text-gray-400 text-sm">{detail.label}</h3>
@@ -473,7 +473,7 @@ function App() {
                     {category.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1 bg-blue-500/20 rounded-full text-sm hover:bg-blue-500/30 transition-colors duration-300"
+                        className="px-3 py-1 bg-indigo-400/20 rounded-full text-sm hover:bg-indigo-400/30 transition-colors duration-300"
                       >
                         {skill}
                       </span>
