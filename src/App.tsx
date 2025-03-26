@@ -359,7 +359,7 @@ function App() {
               <UserRoundCheck className="w-6 h-6 text-indigo-400 mr-3" />
               <h2 className="text-2xl font-bold text-blue-400 gradient-text">About Me</h2>
             </div>
-            <div className="bg-slate-800/50 p-8 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
+            <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300">
               <div className="space-y-6 text-gray-300 mb-0">
                 <div className="text-justify leading-relaxed tracking-wide">
                   {/*<p className="text-gray-300 leading-relaxed">
@@ -378,7 +378,7 @@ function App() {
                       <highlight.icon className="w-5 h-5 text-indigo-400 group-hover:text-indigo-300 transition-colors" />
                       <h3 className="ml-2 text-white font-medium">{highlight.title}</h3>
                     </div>
-                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed tracking-wide">
+                    <p className="mx-1 text-sm text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed tracking-wide">
                       {highlight.description}
                     </p>
                   </div>
@@ -416,10 +416,10 @@ function App() {
               {languages.map((language, index) => (
                 <div
                   key={index}
-                  className="language-card glass-card p-6 rounded-lg transition-all duration-300"
+                  className="language-card glass-card pt-4 pb-5 px-5 rounded-lg transition-all duration-300"
                   style={{ transitionDelay: `${index * 0.1}s` }}
                 >
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center">
                       <h3 className="text-base font-semibold text-white">{language.name}</h3>
                     </div>
